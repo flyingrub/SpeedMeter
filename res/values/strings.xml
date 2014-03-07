@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Speedmeter</string>
+    <string name="nope">Si vous voyez ce message, il y a un gros souci.</string>
+    <string name="value_none">__</string>
+    <string name="title_gps_acc">Pr\écision</string>
+    <string name="unit_meter">\ m</string>
+    <string name="title_gps_sats">Nombres\ de\ Satellites</string>
+    <string name="title_gps_speed">Vitesse\ actuelle</string>
+    <string name="unit_km_h">\ km\/h</string>
+    <string name="title_gps_maxspeed">Vitesse\ Max</string>
+</resources>

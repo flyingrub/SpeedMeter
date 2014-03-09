@@ -1,4 +1,4 @@
-SpeeMeter
+SpeedMeter
 =========
 
 Description

@@ -98,7 +98,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 
 	    	if (location.hasSpeed()) {
 	    		CurrentSpeed = location.getSpeed() * 3.6;
-	    		gpsSpeed.setText(String.format("%.0f", CurrentSpeed) + "km/h");
+	    		gpsSpeed.setText(String.format("%.0f", CurrentSpeed));
 	    		
 	    		if (CurrentSpeed > MaxSpeed) {
 	    			MaxSpeed = CurrentSpeed;

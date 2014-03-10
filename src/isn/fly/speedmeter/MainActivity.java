@@ -2,6 +2,7 @@ package isn.fly.speedmeter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 //import android.hardware.SensorManager;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -37,7 +38,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
         // Get system services for event delivery
         //mAccSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER); 
     	mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
+    	
     	// Initialise the views.
     	gpsSpeed = (TextView) findViewById(R.id.gpsSpeed);
     	gpsSats = (TextView) findViewById(R.id.gpsSats);
@@ -49,6 +50,15 @@ public final class MainActivity extends Activity implements LocationListener, Li
     @Override
     protected void onResume() {
         super.onResume();
+        
+    	// Teste si le Gps est activé, si non il renvoie vers la classe PermissionsGps.
+    	if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+    	    /* on lance notre activity (qui est une dialog) */
+    	    Intent localIntent = new Intent(this, PermissionGps.class);
+    	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	    startActivity(localIntent);
+    	}
+    	
         //mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener);
         if (mLocationManager.getAllProviders().indexOf(LocationManager.GPS_PROVIDER) >= 0) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
@@ -88,7 +98,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 
 	    	if (location.hasSpeed()) {
 	    		CurrentSpeed = location.getSpeed() * 3.6;
-	    		gpsSpeed.setText(String.format("%.0f", CurrentSpeed));
+	    		gpsSpeed.setText(String.format("%.0f", CurrentSpeed) + "km/h");
 	    		
 	    		if (CurrentSpeed > MaxSpeed) {
 	    			MaxSpeed = CurrentSpeed;
@@ -116,6 +126,5 @@ public final class MainActivity extends Activity implements LocationListener, Li
         super.onStop();
     }
 }
-
 
 

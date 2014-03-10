@@ -14,4 +14,7 @@
     <string name="title_Acce">Données Accéléromètre</string>
     <string name="title_tab">Graphique</string>
     <string name="action_settings">Paramètres</string>
+    <string name="activate_gps">Veuillez activer le Gps pour utiliser l\'application.</string>
+    <string name="quit">Quitter l\'application</string>
+    <string name="go_to_gps">Activer le Gps</string>
 </resources>

@@ -25,6 +25,7 @@ ___
 * Add an option if GPS is disabled. --> Go to setting to activate it !
 * New layout 
 * Added land layout.
+* Added Fr and En translation
 
 
 Download

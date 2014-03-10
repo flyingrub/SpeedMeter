@@ -2,19 +2,17 @@
 <resources>
 
     <string name="app_name">SpeedMeter</string>
-    <string name="hello_world">Hello world!</string>
     <string name="value_none">–</string>
-    <string name="title_gps_acc">Précision</string>
+    <string name="title_gps_acc">Precision</string>
     <string name="unit_meter">&#x00a0;m</string>
     <string name="title_gps_sats">Satellites</string>
-    <string name="title_gps_speed">Vitesse</string>
+    <string name="title_gps_speed">Speed</string>
     <string name="unit_km_h">&#x00a0;km/h</string>
-    <string name="title_gps_maxspeed">Vitesse Max</string>
-    <string name="title_GPS">Données GPS</string>
-    <string name="title_Acce">Données Accéléromètre</string>
-    <string name="title_tab">Graphique</string>
-    <string name="action_settings">Paramètres</string>
-    <string name="activate_gps">Veuillez activer le Gps pour utiliser l\'application.</string>
-    <string name="quit">Quitter l\'application</string>
-    <string name="go_to_gps">Activer le Gps</string>
+    <string name="title_gps_maxspeed">Max Speed</string>
+    <string name="title_GPS">GPS Data</string>
+    <string name="title_Acce">Accelerometer Data</string>
+    <string name="title_tab">Graph</string>
+    <string name="action_settings">Settings</string>
+    <string name="activate_gps">You should enable the GPS in order to use this app.</string>
+    <string name="go_to_gps">Enable the GPS</string>
 </resources>

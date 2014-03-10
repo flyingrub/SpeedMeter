@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SpeedMeter</string>
+    <string name="value_none">–</string>
+    <string name="title_gps_acc">Précision</string>
+    <string name="unit_meter">&#x00a0;m</string>
+    <string name="title_gps_sats">Satellites</string>
+    <string name="title_gps_speed">Vitesse</string>
+    <string name="unit_km_h">&#x00a0;km/h</string>
+    <string name="title_gps_maxspeed">Vitesse Max</string>
+    <string name="title_GPS">Données GPS</string>
+    <string name="title_Acce">Données Accéléromètre</string>
+    <string name="title_tab">Graphique</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="activate_gps">Veuillez activer le Gps pour utiliser l\'application.</string>
+    <string name="go_to_gps">Activer le Gps</string>
+</resources>

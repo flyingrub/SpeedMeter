@@ -22,6 +22,7 @@ ___
 10/03/2014
 ___
 * Remove old file
+* Add an option if GPS is disabled. --> Go to setting to activate it !
 
 
 Download

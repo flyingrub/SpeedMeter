@@ -15,4 +15,8 @@
     <string name="action_settings">Paramètres</string>
     <string name="activate_gps">Veuillez activer le Gps pour utiliser l\'application.</string>
     <string name="go_to_gps">Activer le Gps</string>
+    <string name="med_speed">Vitesse Moyenne</string>
+    <string name="title_ac_speed">Vitesse Actuelle</string>
+    <string name="title_speed_data">Données Vitesse</string>
+    <string name="title_land">Données GPS et Vitesse</string>
 </resources>

@@ -31,6 +31,7 @@ public class PermissionGps extends Activity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
+        setContentView( R.layout.activity_main );
         createGpsDisabledAlert();
     }
 }

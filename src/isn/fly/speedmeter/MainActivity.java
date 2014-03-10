@@ -117,8 +117,8 @@ public final class MainActivity extends Activity implements LocationListener, Li
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
     public void onAccuracyChanged(int arg0, int arg1) {}
     public void onSensorChanged(int arg0, float[] arg1) {}
-
     
+    /* Remove the locationlistener updates when Activity is stoped */
     @Override
     protected void onStop() {
     	mLocationManager.removeUpdates(this);

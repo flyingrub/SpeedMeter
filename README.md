@@ -26,6 +26,9 @@ ___
 * New layout 
 * Added land layout.
 * Added Fr and En translation
+* Remove accelerometer Speed
+* Better Layout
+* Average Speed
 
 
 Download

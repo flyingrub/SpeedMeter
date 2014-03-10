@@ -15,7 +15,7 @@
     android:weightSum="2.0" >
 
     <TextView
-        android:id="@+id/gpsSpeedMain"
+        android:id="@+id/gpsSpeed"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
@@ -42,7 +42,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     style="?android:attr/listSeparatorTextViewStyle"
-    android:text="@string/title_GPS" />
+    android:text="@string/title_land" />
 
 <LinearLayout
     android:layout_width="fill_parent"
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:lines="1"
-            android:text="@string/title_gps_speed"
+            android:text="@string/med_speed"
             android:textAppearance="?android:attr/textAppearanceSmall" />
         
         <LinearLayout
@@ -122,7 +122,7 @@
             android:weightSum="2.0" >
 
             <TextView
-                android:id="@+id/gpsSpeed"
+                android:id="@+id/gpsAverageSpeed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"

@@ -61,7 +61,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	
         //mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener);
         if (mLocationManager.getAllProviders().indexOf(LocationManager.GPS_PROVIDER) >= 0) {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, this);
         } else {
             Log.w("MainActivity", "No GPS location provider found. GPS data display will not be available.");
         }
@@ -71,6 +71,8 @@ public final class MainActivity extends Activity implements LocationListener, Li
      * Called when the status of the GPS changes. Updates GPS display.
      */
     public void onGpsStatusChanged (int event) {
+    	switch (event) {
+    	case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
     		GpsStatus status = mLocationManager.getGpsStatus(null);
     		int satsInView = 0;
     		int satsUsed = 0;
@@ -78,10 +80,21 @@ public final class MainActivity extends Activity implements LocationListener, Li
     		for (GpsSatellite sat : sats) {
     			satsInView++;
     			if (sat.usedInFix()) {
-    				satsUsed++;
+    			satsUsed++;
     			}
     		}
     		gpsSats.setText(String.valueOf(satsUsed) + "/" + String.valueOf(satsInView));
+    	break;
+    	case GpsStatus.GPS_EVENT_STOPPED:
+        	// Teste si le Gps est activé, si non il renvoie vers la classe PermissionsGps.
+        	if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        	    /* on lance notre activity (qui est une dialog) */
+        	    Intent localIntent = new Intent(this, PermissionGps.class);
+        	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        	    startActivity(localIntent);
+        	}
+        }
+
     }
     
     /**

@@ -30,6 +30,11 @@ ___
 * Better Layout
 * Average Speed
 
+11/03/2014
+___
+* Screen keep on
+* if gps goes of when app is launched, a popup will prompt the user to activate it.
+
 
 Download
 ---

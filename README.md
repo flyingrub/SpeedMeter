@@ -35,6 +35,13 @@ ___
 * Screen keep on
 * if gps goes of when app is launched, a popup will prompt the user to activate it.
 
+13/03/2014
+___
+* Big update
+* many addons : Start / Pause / Reset
+* Gps distance
+* Average Speed
+TODO : Save Run + Settings
 
 Download
 ---

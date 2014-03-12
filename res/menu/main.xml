@@ -1,9 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
-
+    
+    <item android:id="@+id/action_play"
+          android:icon="@drawable/ic_action_play"
+          android:title="@string/action_play"
+          android:showAsAction="always" />
+    
+    <item android:id="@+id/action_reset"
+          android:icon="@drawable/ic_action_refresh"
+          android:title="@string/action_reset"
+          android:showAsAction="always" />
+    
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:showAsAction="never" />
+    
 </menu>

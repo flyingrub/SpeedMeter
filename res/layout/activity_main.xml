@@ -153,6 +153,94 @@
 </LinearLayout>
 
 <TextView
+    android:id="@+id/title_Run"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    style="?android:attr/listSeparatorTextViewStyle"
+    android:text="@string/title_run" />
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:baselineAligned="true"
+    android:measureWithLargestChild="true"
+    android:weightSum="2.0" >
+        
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0" >
+            
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="@string/title_distance"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0" >
+                
+                <TextView
+                    android:id="@+id/gpsDistance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="@string/value_none"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                
+                <TextView
+                    android:id="@+id/gpsdistanceUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@string/gps_distance_unit1"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+    </LinearLayout>
+        
+    <View android:layout_height="30dp"
+        android:layout_width="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:background="#90909090"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0" >
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:text="@string/temp"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <Chronometer 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" 
+            android:gravity="center_horizontal"
+            android:id="@+id/chrono"/>
+    </LinearLayout>
+</LinearLayout>
+
+<TextView
     android:id="@+id/title_GPS"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

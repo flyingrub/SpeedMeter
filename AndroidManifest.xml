@@ -26,6 +26,12 @@
             </intent-filter>
         </activity>
         <activity android:name="PermissionGps"></activity>
+        <activity android:name="Settings"
+            android:parentActivityName="isn.fly.speedmeter.MainActivity" >
+            <meta-data
+                 android:name="android.support.PARENT_ACTIVITY"
+                 android:value="isn.fly.speedmeter.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

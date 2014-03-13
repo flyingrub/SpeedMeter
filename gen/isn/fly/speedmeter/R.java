@@ -25,8 +25,8 @@ public final class R {
     }
     public static final class id {
         public static final int action_play=0x7f080018;
-        public static final int action_reset=0x7f080019;
         public static final int action_settings=0x7f08001a;
+        public static final int action_stop=0x7f080019;
         public static final int chrono=0x7f08000f;
         public static final int gpsAccuracy=0x7f080012;
         public static final int gpsAccuracyUnit=0x7f080013;

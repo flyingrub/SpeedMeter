@@ -5,9 +5,9 @@
           android:title="@string/action_play"
           android:showAsAction="always" />
     
-    <item android:id="@+id/action_reset"
-          android:icon="@drawable/ic_action_refresh"
-          android:title="@string/action_reset"
+    <item android:id="@+id/action_stop"
+          android:icon="@drawable/ic_action_stop"
+          android:title="@string/action_stop"
           android:showAsAction="always" />
     
     <item android:id="@+id/action_settings"

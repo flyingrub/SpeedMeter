@@ -18,7 +18,6 @@ ___
 ___
 * Full GPS support :)
 
-
 10/03/2014
 ___
 * Remove old file
@@ -41,8 +40,15 @@ ___
 * many addons : Start / Pause / Reset
 * Gps distance
 * Average Speed
-TODO : Save Run + Settings
+* Untested ..
+
+14/03/2014
+__
+* Fixed all Bug !
+* Fully working ;)
+
 
 Download
 ---
  -->  http://www.androidfilehost.com/?w=files&flid=12796  <--
+TODO : Save Run + Settings

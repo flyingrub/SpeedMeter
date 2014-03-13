@@ -16,6 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <service android:name="GpsServices" />
         <activity
             android:name="isn.fly.speedmeter.MainActivity"
             android:label="@string/app_name" >

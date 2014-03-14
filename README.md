@@ -42,12 +42,12 @@ ___
 * Untested ..
 
 14/03/2014
-__
+___
 * Fixed all Bug !
 * Fully working ;)
 * New changes.. Some fix .
 
 Download
 ---
- -->  http://www.androidfilehost.com/?w=files&flid=12796  <--
-TODO : Save Run + Settings
+* -->  http://www.androidfilehost.com/?w=files&flid=12796  <--
+* TODO : Save Run + Settings

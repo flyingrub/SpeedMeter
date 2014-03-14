@@ -70,6 +70,8 @@ public final class R {
         public static final int gps_distance_unit1=0x7f05001e;
         public static final int gps_distance_unit2=0x7f05001f;
         public static final int med_speed=0x7f05000d;
+        public static final int no_sats=0x7f050023;
+        public static final int noti_id=0x7f050022;
         public static final int pause=0x7f05001a;
         public static final int reset=0x7f050021;
         public static final int resume=0x7f050019;

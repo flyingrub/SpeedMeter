@@ -13,7 +13,6 @@ ___
 
 * First upload
 
-
 9/03/2014
 ___
 * Full GPS support :)
@@ -46,7 +45,7 @@ ___
 __
 * Fixed all Bug !
 * Fully working ;)
-
+* New changes.. Some fix .
 
 Download
 ---

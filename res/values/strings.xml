@@ -35,4 +35,6 @@
     <string name="gps_distance_unit2">Km</string>
     <string name="unit_s">sec</string>
     <string name="reset">Reset</string>
+    <string name="noti_id">thisismyid</string>
+    <string name="no_sats">Waiting for a better gps signal... Please try later.</string>
 </resources>

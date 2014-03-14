@@ -22,11 +22,12 @@ import android.widget.Toast;
 public final class MainActivity extends Activity implements LocationListener, Listener{
 	private LocationManager mLocationManager;
     
-	boolean firstime = true;
+	static boolean firstime = true;
+	boolean accExist = false;
 	double CurrentSpeed = 0;
 	double MaxSpeed = 0;
-	long timeWhenStopped = 0;
-	int Running = 0; // 0:Stopped 1:Running 2:Paused
+	public long timeWhenStopped = 0;
+	private static int Running = 0; // 0:Stopped 1:Running 2:Paused
 	double currentLon=0 ;
 	double currentLat=0 ;
 	double lastLon = 0;
@@ -36,6 +37,8 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	double distanceM = 0;
 	double averageSpeed = 0;
 	long time;
+	int satsInView = 0;
+	int satsUsed = 0;
 	
 	Location lastlocation = new Location("last");
 	Chronometer chrono;
@@ -74,9 +77,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
 		if (savedInstanceState != null){ 
 			Running = savedInstanceState.getInt("SavedRunning");
 			timeWhenStopped = savedInstanceState.getLong("SavedtimeWhenStopped");
-			distanceM = savedInstanceState.getDouble("SaveddistanceM");
-			lastLat = savedInstanceState.getDouble("SavedlastLat");
-			lastLon = savedInstanceState.getDouble("SavedlastLon");
 			gpsSpeed.setText(savedInstanceState.getString("SavedgpsSpeed"));
 			gpsSpeedMax.setText(savedInstanceState.getString("SavedgpsSpeedMax"));
 			gpsAccuracy.setText(savedInstanceState.getString("SavedgpsAccuracy"));
@@ -114,9 +114,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	  }
     	  savedInstanceState.putInt("SavedRunning", Running);
     	  savedInstanceState.putLong("SavedtimeWhenStopped", timeWhenStopped);
-    	  savedInstanceState.putDouble("SaveddistanceM", distanceM);
-    	  savedInstanceState.putDouble("SavedlastLat", lastLat);
-    	  savedInstanceState.putDouble("SavedlastLon", lastLon);
     	  savedInstanceState.putString("SavedgpsSpeedMax", gpsSpeedMax.getText().toString());
     	  savedInstanceState.putString("SavedgpsSpeed", gpsSpeed.getText().toString());
     	  savedInstanceState.putString("SavedgpsAccuracy", gpsAccuracy.getText().toString());
@@ -195,15 +192,15 @@ public final class MainActivity extends Activity implements LocationListener, Li
         super.onStop();
     }
     
-    /**
+    /*****************************************************************
      * Called when the status of the GPS changes. Updates GPS display.
-     */
+     *****************************************************************/
     public void onGpsStatusChanged (int event) {
     	switch (event) {
     	case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
     		GpsStatus status = mLocationManager.getGpsStatus(null);
-    		int satsInView = 0;
-    		int satsUsed = 0;
+    		satsInView = 0;
+    		satsUsed = 0;
     		Iterable<GpsSatellite> sats = status.getSatellites();
     		for (GpsSatellite sat : sats) {
     			satsInView++;
@@ -217,9 +214,12 @@ public final class MainActivity extends Activity implements LocationListener, Li
         	// Teste si le Gps est activé, si non il renvoie vers la classe PermissionsGps.
         	if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
         	    /* on lance notre activity (qui est une dialog) */
+        		if (Running == 1){
+        		startRun(); // met en pause
+        		}
         	    Intent localIntent = new Intent(this, PermissionGps.class);
         	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        	    startActivity(localIntent);
+        	    startActivity(localIntent); 
         	}
         }
 
@@ -237,88 +237,98 @@ public final class MainActivity extends Activity implements LocationListener, Li
         }
         
         if (location.hasAccuracy()) {
+        	accExist=true;
         	gpsAccuracy.setText(String.format("%.0f", location.getAccuracy()));
+        }else{
+        	accExist=false;
+        	gpsAccuracy.setText(R.string.value_none);
         }
         
-        if (Running == 1){
-        	
-        	//get the current lat and long
-        	currentLat = location.getLatitude();
-        	currentLon = location.getLongitude();
-
-        	if (firstime){
-        		lastLat = currentLat;
-        		lastLon = currentLon;
-        	}
-    		firstime=false;
-
-    		lastlocation.setLatitude(lastLat);
-    		lastlocation.setLongitude(lastLon);
-        	distance = lastlocation.distanceTo(location);
-        	
-        	if (location.getAccuracy() < distance){
-        		distanceM = distanceM + distance;
-        		distanceKm = distanceM / 1000f;
-        	
-        		lastLat = currentLat;
-        		lastLon = currentLon;
-        	
-        		if (distanceKm < 1){
-        			gpsDistance.setText(String.format("%.0f", distanceM));
-        			gpsDistanceUnit.setText(R.string.gps_distance_unit1);
-        		}else{
-        			gpsDistance.setText(String.format("%.3f", distanceKm));
-        			gpsDistanceUnit.setText(R.string.gps_distance_unit2);
-        		}
-        		
-        		averageSpeed = (distanceM / (time / 1000)) * 3.7 ;
-        		Log.v("test", "averageSpeed=" + averageSpeed);
-        		gpsAverageSpeed.setText(String.format("%.1f", averageSpeed));
-        	  
-	            if (CurrentSpeed > MaxSpeed) {
-	            	MaxSpeed = CurrentSpeed;
-	            	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
-	            }
-        	}
-        }  
     }
     
+    /****************************************
+     * Called by the service. 
+     ****************************************/
+    public void updateGpsview(Double distanceM, Double distanceKm){
+    	Log.i("Mainactivity", "updateGpsview done");
+		if (distanceKm < 1){
+			gpsDistance.setText(String.format("%.0f", distanceM));
+			gpsDistanceUnit.setText(R.string.gps_distance_unit1);
+		}else{
+			gpsDistance.setText(String.format("%.3f", distanceKm));
+			gpsDistanceUnit.setText(R.string.gps_distance_unit2);
+		}
+		
+		averageSpeed = (distanceM / (time / 1000)) * 3.7 ;
+		Log.i("Main", "averageSpeed=" + averageSpeed);
+		gpsAverageSpeed.setText(String.format("%.1f", averageSpeed));
+	  
+        if (CurrentSpeed > MaxSpeed) {
+        	MaxSpeed = CurrentSpeed;
+        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
+        }
+        firstime=false;
+    }
+        
     public void onProviderDisabled(String arg0) {}
     public void onProviderEnabled(String arg0) {}
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
     
+
+    public static int Running(){
+    	return Running;
+    }
+    
+    public static boolean firstime(){
+    	return firstime;
+    }
     
     public void startRun(){
-    	if (Running == 1){ // Was Running
-    		Toast.makeText(getApplicationContext(), R.string.pause, Toast.LENGTH_SHORT).show();
-    		Running=2;
-    		invalidateOptionsMenu();
-			timeWhenStopped = chrono.getBase() - SystemClock.elapsedRealtime();
-			chrono.stop();
-    	}else if (Running == 2){ // Was Paused
-    		Running=1;
-    		invalidateOptionsMenu();
-    		Toast.makeText(getApplicationContext(), R.string.resume, Toast.LENGTH_SHORT).show();
-    		chrono.setBase(SystemClock.elapsedRealtime()+ timeWhenStopped);
-    	    chrono.start();
-    	}else if (Running == 0){ // was Stopped
-    		Running=1;
-    		firstime = true;
-    		invalidateOptionsMenu();
-    		Toast.makeText(getApplicationContext(), R.string.start, Toast.LENGTH_SHORT).show();
-    	    chrono.setBase(SystemClock.elapsedRealtime());
-    	    chrono.start();
-    	    startService(new Intent(getBaseContext(), GpsServices.class));
-
+    	if (accExist){
+	    	if (Running == 1){ // Was Running
+	    		Toast.makeText(getApplicationContext(), R.string.pause, Toast.LENGTH_SHORT).show();
+	    		Running=2;
+	    		invalidateOptionsMenu();
+				timeWhenStopped = chrono.getBase() - SystemClock.elapsedRealtime();
+				chrono.stop();
+	    	}else if (Running == 2){ // Was Paused
+	    		Running=1;
+	    		firstime =true;
+	    		invalidateOptionsMenu();
+	    		Toast.makeText(getApplicationContext(), R.string.resume, Toast.LENGTH_SHORT).show();
+	    		chrono.setBase(SystemClock.elapsedRealtime()+ timeWhenStopped);
+	    	    chrono.start();
+	    	}else if (Running == 0){ // was Stopped
+	    		Running=1;
+	    		firstime = true;
+	    		invalidateOptionsMenu();
+	    		Toast.makeText(getApplicationContext(), R.string.start, Toast.LENGTH_SHORT).show();
+	    	    chrono.setBase(SystemClock.elapsedRealtime());
+	    	    chrono.start();
+	    	    startService(new Intent(getBaseContext(), GpsServices.class));
+	    	}
+    	}else{
+    		Toast.makeText(getApplicationContext(), R.string.no_sats, Toast.LENGTH_SHORT).show();
     	}
-    
     }
+   
     public void saveRun(){
     	if (Running == 0){
     		Toast.makeText(getApplicationContext(), R.string.start_first, Toast.LENGTH_SHORT).show();
     	}else{
 
     	}
+    }
+    
+    @Override
+    protected void onNewIntent(Intent intent) {
+       super.onNewIntent(intent);
+       if(intent.getStringExtra("stopRun").equals("stopRun")){
+    	   stopRun();
+       }
+       if(intent.getStringExtra("startRun").equals("startRun")){
+    	   startRun();
+       }
     }
     
     public void stopRun() {

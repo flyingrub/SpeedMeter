@@ -19,8 +19,8 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	
 	MainActivity MainAc = new MainActivity();
 	
-    int Running = 0;
-	boolean firstime = true;
+    static int Running = 0;
+	static boolean firstime = true;
 	double currentLon=0 ;
 	double currentLat=0 ;
 	double lastLon = 0;
@@ -38,21 +38,11 @@ public class GpsServices extends Service implements LocationListener, Listener{
 		Intent notificationIntent = new Intent(this, MainActivity.class);
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 		
-		Intent actionStop = new Intent(this, MainActivity.class);
-		actionStop.putExtra("stopRun","stopRun");
-		PendingIntent actionstop = PendingIntent.getActivity(this, 0, actionStop, 0);
-		
-		Intent actionPP = new Intent(this, MainActivity.class);
-		actionPP.putExtra("startRun","startRun");
-		PendingIntent actionpp = PendingIntent.getActivity(this, 0, actionPP, 0);
-		
 		Notification notification = new Notification.Builder(getBaseContext())
 				.setContentTitle("Parcours en cours..."
-				.toString()).setContentText("lol")
+				.toString()).setContentText("Cliquez pour acceder a l'application")
 				.setSmallIcon(R.drawable.ic_launcher)
 				.setContentIntent(pendingIntent)
-				.addAction(R.drawable.ic_action_play, "Play/Pause", actionpp)
-				.addAction(R.drawable.ic_action_stop, "Stop", actionstop)
 				.build();
 		
 		startForeground(R.string.noti_id, notification);
@@ -68,8 +58,6 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	}
 
 	public void onLocationChanged(Location location) {
-		Running = MainActivity.Running();
-		firstime = MainActivity.firstime();
 		Log.i("Service", "Location Changed. Runnning = "+ Running +"; Firstime = "+ firstime);
 		if (Running == 1){
 				//get the current lat and long
@@ -80,6 +68,7 @@ public class GpsServices extends Service implements LocationListener, Listener{
 					lastLat = currentLat;
 					lastLon = currentLon;
 				}
+				firstime=false;
 				
 				lastlocation.setLatitude(lastLat);
 				lastlocation.setLongitude(lastLon);
@@ -97,6 +86,14 @@ public class GpsServices extends Service implements LocationListener, Listener{
 		}
 	}
 	
+    public static void setfirstime(boolean temp){
+    	firstime = temp;
+    }
+    
+    public static void setRunning(int temp){
+    	Running = temp;
+    }
+    
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		

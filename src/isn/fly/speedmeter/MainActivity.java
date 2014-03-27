@@ -36,7 +36,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	double distanceKm = 0;
 	double distanceM = 0;
 	double averageSpeed = 0;
-	long time;
+	public static long time;
 	int satsInView = 0;
 	int satsUsed = 0;
 	
@@ -91,20 +91,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
 				chrono.setBase(SystemClock.elapsedRealtime()+ timeWhenStopped);
 			}
     	}
-        
-        chrono.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer chrono) {
-                time = SystemClock.elapsedRealtime() - chrono.getBase();
-                int h   = (int)(time /3600000);
-                int m = (int)(time  - h*3600000)/60000;
-                int s= (int)(time  - h*3600000- m*60000)/1000 ;
-                String hh = h < 10 ? "0"+h: h+"";
-                String mm = m < 10 ? "0"+m: m+"";
-                String ss = s < 10 ? "0"+s: s+"";
-                chrono.setText(hh+":"+mm+":"+ss);
-            }
-        });
     }
     
     protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -182,6 +168,21 @@ public final class MainActivity extends Activity implements LocationListener, Li
             Log.w("MainActivity", "No GPS location provider found. GPS data display will not be available.");
         }
         mLocationManager.addGpsStatusListener(this);
+        
+        chrono.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chrono) {
+                time = SystemClock.elapsedRealtime() - chrono.getBase();
+                int h   = (int)(time /3600000);
+                int m = (int)(time  - h*3600000)/60000;
+                int s= (int)(time  - h*3600000- m*60000)/1000 ;
+                String hh = h < 10 ? "0"+h: h+"";
+                String mm = m < 10 ? "0"+m: m+"";
+                String ss = s < 10 ? "0"+s: s+"";
+                chrono.setText(hh+":"+mm+":"+ss);
+                Log.i("SpeedB", "averageSpeed=" + averageSpeed + "; time =" + time + "; lol=" + (distanceM / (time / 1000)) * 3.7); 
+            }
+        });
     }
     
     /* Remove the locationlistener updates when Activity is stoped */
@@ -228,7 +229,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
     /****************************************
      * Called when the location changes. 
      ****************************************/
-    
     public void onLocationChanged(Location location) {
     	
         if (location.hasSpeed()) {
@@ -244,6 +244,10 @@ public final class MainActivity extends Activity implements LocationListener, Li
         	gpsAccuracy.setText(R.string.value_none);
         }
         
+        if (CurrentSpeed > MaxSpeed) {
+        	MaxSpeed = CurrentSpeed;
+        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
+        }
     }
     
     /****************************************
@@ -251,6 +255,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
      ****************************************/
     public void updateGpsview(Double distanceM, Double distanceKm){
     	Log.i("Mainactivity", "updateGpsview done");
+    	
 		if (distanceKm < 1){
 			gpsDistance.setText(String.format("%.0f", distanceM));
 			gpsDistanceUnit.setText(R.string.gps_distance_unit1);
@@ -258,79 +263,52 @@ public final class MainActivity extends Activity implements LocationListener, Li
 			gpsDistance.setText(String.format("%.3f", distanceKm));
 			gpsDistanceUnit.setText(R.string.gps_distance_unit2);
 		}
-		
 		averageSpeed = (distanceM / (time / 1000)) * 3.7 ;
-		Log.i("Main", "averageSpeed=" + averageSpeed);
 		gpsAverageSpeed.setText(String.format("%.1f", averageSpeed));
-	  
-        if (CurrentSpeed > MaxSpeed) {
-        	MaxSpeed = CurrentSpeed;
-        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
-        }
-        firstime=false;
+		
+		firstime=false;
     }
         
     public void onProviderDisabled(String arg0) {}
     public void onProviderEnabled(String arg0) {}
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
     
-
-    public static int Running(){
-    	return Running;
-    }
-    
-    public static boolean firstime(){
-    	return firstime;
-    }
-    
     public void startRun(){
     	if (accExist){
+    		
 	    	if (Running == 1){ // Was Running
 	    		Toast.makeText(getApplicationContext(), R.string.pause, Toast.LENGTH_SHORT).show();
 	    		Running=2;
+	    		GpsServices.setRunning(Running);
 	    		invalidateOptionsMenu();
 				timeWhenStopped = chrono.getBase() - SystemClock.elapsedRealtime();
 				chrono.stop();
 	    	}else if (Running == 2){ // Was Paused
 	    		Running=1;
 	    		firstime =true;
+	    		GpsServices.setfirstime(firstime);
+	    		GpsServices.setRunning(Running);
 	    		invalidateOptionsMenu();
 	    		Toast.makeText(getApplicationContext(), R.string.resume, Toast.LENGTH_SHORT).show();
 	    		chrono.setBase(SystemClock.elapsedRealtime()+ timeWhenStopped);
 	    	    chrono.start();
 	    	}else if (Running == 0){ // was Stopped
 	    		Running=1;
-	    		firstime = true;
+	    		firstime=true;
+	    		GpsServices.setRunning(Running);
+	    		GpsServices.setfirstime(firstime);
 	    		invalidateOptionsMenu();
 	    		Toast.makeText(getApplicationContext(), R.string.start, Toast.LENGTH_SHORT).show();
 	    	    chrono.setBase(SystemClock.elapsedRealtime());
 	    	    chrono.start();
 	    	    startService(new Intent(getBaseContext(), GpsServices.class));
 	    	}
-    	}else{
-    		Toast.makeText(getApplicationContext(), R.string.no_sats, Toast.LENGTH_SHORT).show();
-    	}
+	    	
+	    }else{
+	    	Toast.makeText(getApplicationContext(), R.string.no_sats, Toast.LENGTH_SHORT).show();
+	    }
     }
-   
-    public void saveRun(){
-    	if (Running == 0){
-    		Toast.makeText(getApplicationContext(), R.string.start_first, Toast.LENGTH_SHORT).show();
-    	}else{
 
-    	}
-    }
-    
-    @Override
-    protected void onNewIntent(Intent intent) {
-       super.onNewIntent(intent);
-       if(intent.getStringExtra("stopRun").equals("stopRun")){
-    	   stopRun();
-       }
-       if(intent.getStringExtra("startRun").equals("startRun")){
-    	   startRun();
-       }
-    }
-    
     public void stopRun() {
     	if (Running == 0 | Running == 2){
     		Toast.makeText(getApplicationContext(), R.string.stop, Toast.LENGTH_SHORT).show();
@@ -343,6 +321,8 @@ public final class MainActivity extends Activity implements LocationListener, Li
     		averageSpeed=0;
     		firstime=true;
     		Running = 0;
+    		GpsServices.setfirstime(firstime);
+    		GpsServices.setRunning(Running);
     		
     		gpsSpeedMax.setText(R.string.value_none);
     		gpsAverageSpeed.setText(R.string.value_none);

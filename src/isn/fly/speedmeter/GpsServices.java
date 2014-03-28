@@ -28,6 +28,8 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	double distance = 0;
 	double distanceKm = 0;
 	double distanceM = 0;
+	double locCurSpeed = 0;
+	double locMaxSpeed = 0;
 	
 	Location lastlocation = new Location("last");
 	
@@ -81,7 +83,16 @@ public class GpsServices extends Service implements LocationListener, Listener{
 					lastLat = currentLat;
 					lastLon = currentLon;
 				}
-				MainAc.updateGpsview(distanceM, distanceKm);
+				
+		        if (location.hasSpeed()) {
+		        	locCurSpeed = location.getSpeed() * 3.6;
+		        }
+		        
+		        if (locCurSpeed > locMaxSpeed) {
+		        	locMaxSpeed = locCurSpeed;
+		        }
+		        
+				MainAc.updateGpsview(distanceM, distanceKm, locMaxSpeed);
 				Log.i("Service", "updateGpsview launched. Distance ="+distanceM);
 		}
 	}
@@ -107,7 +118,7 @@ public class GpsServices extends Service implements LocationListener, Listener{
 		return null;
 	}
 	
-    /* Remove the locationlistener updates when Services is stoped */
+    /* Remove the locationlistener updates when Services is stopped */
 	  @Override
 	  public void onDestroy() {
 	    	mLocationManager.removeUpdates(this);

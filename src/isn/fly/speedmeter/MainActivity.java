@@ -52,7 +52,9 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	protected static TextView gpsAverageSpeed;
 	
     
-    /* Called when the activity is first created. */
+    /********************************************* 
+     * Called when the activity is first created. 
+     *********************************************/
     @Override
     public void onCreate( Bundle savedInstanceState ){
     	super.onCreate( savedInstanceState );
@@ -64,7 +66,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
         // Get system services for event delivery
     	mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
     	
-    	// Initialise the views.
+    	// Initialize the views.
     	gpsSpeed = (TextView) findViewById(R.id.gpsSpeed);
     	gpsSats = (TextView) findViewById(R.id.gpsSats);
     	gpsSpeedMax = (TextView) findViewById(R.id.gpsSpeedMax);
@@ -73,7 +75,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	gpsDistanceUnit = (TextView) findViewById(R.id.gpsdistanceUnit);
     	gpsAverageSpeed = (TextView) findViewById(R.id.gpsAverageSpeed);
     	
-    	// on récupère les anciennes données
+    	// We restore the data
 		if (savedInstanceState != null){ 
 			Running = savedInstanceState.getInt("SavedRunning");
 			timeWhenStopped = savedInstanceState.getLong("SavedtimeWhenStopped");
@@ -93,6 +95,9 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	}
     }
     
+    /***************************************************
+     * Called when android must save the instanceState.
+     ***************************************************/
     protected void onSaveInstanceState(Bundle savedInstanceState) {
     	  super.onSaveInstanceState(savedInstanceState);
     	  if (Running == 1){
@@ -110,6 +115,9 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	  savedInstanceState.putString("SavedgpsAverageSpeed", gpsAverageSpeed.getText().toString());
     }
     
+    /**********************************************
+     * Called when android Create the optionsMenu.
+     **********************************************/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -117,6 +125,10 @@ public final class MainActivity extends Activity implements LocationListener, Li
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
+    
+    /********************************************************************************
+     * Called when the menu is prepared (we call it with invalidateOptionsMenu(); ).
+     ********************************************************************************/
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 		MenuItem play = menu.findItem(R.id.action_play);
@@ -127,12 +139,13 @@ public final class MainActivity extends Activity implements LocationListener, Li
     		play.setIcon(R.drawable.ic_action_pause);
     	}
 		return super.onPrepareOptionsMenu(menu);
-
     }
-  
+    
+    /**************************************
+     * Called when we click on a menu item.
+     **************************************/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_play:
@@ -149,19 +162,24 @@ public final class MainActivity extends Activity implements LocationListener, Li
         }
     }
 
+    
+   /***************************************** 
+    * Called when the activity is recreated. 
+    *****************************************/
 	@Override
     protected void onResume() {
         super.onResume();
         
-    	// Teste si le Gps est activé, si non il renvoie vers la classe PermissionsGps.
+    	// Test if Gps is Enabled else launch PermissionGps.java
     	if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-    	    /* on lance notre activity (qui est une dialog) */
+    		if (Running == 1){
+    			startRun(); // Pause
+    		}
     	    Intent localIntent = new Intent(this, PermissionGps.class);
     	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    	    startActivity(localIntent);
+    	    startActivity(localIntent); 
     	}
     	
-        //mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener);
         if (mLocationManager.getAllProviders().indexOf(LocationManager.GPS_PROVIDER) >= 0) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, this);
         } else {
@@ -185,7 +203,10 @@ public final class MainActivity extends Activity implements LocationListener, Li
         });
     }
     
-    /* Remove the locationlistener updates when Activity is stoped */
+    
+    /***************************************
+     * Called when the activity is stopped. 
+     ***************************************/
     @Override
     protected void onStop() {
     	mLocationManager.removeUpdates(this);
@@ -212,11 +233,10 @@ public final class MainActivity extends Activity implements LocationListener, Li
     		gpsSats.setText(String.valueOf(satsUsed) + "/" + String.valueOf(satsInView));
     	break;
     	case GpsStatus.GPS_EVENT_STOPPED:
-        	// Teste si le Gps est activé, si non il renvoie vers la classe PermissionsGps.
+        	// Test if Gps is Enabled else launch PermissionGps.java
         	if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-        	    /* on lance notre activity (qui est une dialog) */
         		if (Running == 1){
-        		startRun(); // met en pause
+        			startRun(); // Pause
         		}
         	    Intent localIntent = new Intent(this, PermissionGps.class);
         	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -253,9 +273,14 @@ public final class MainActivity extends Activity implements LocationListener, Li
     /****************************************
      * Called by the service. 
      ****************************************/
-    public void updateGpsview(Double distanceM, Double distanceKm){
+    public void updateGpsview(Double distanceM, Double distanceKm, Double locMaxSpeed){
     	Log.i("Mainactivity", "updateGpsview done");
     	
+        if (locMaxSpeed > MaxSpeed) {
+        	MaxSpeed = locMaxSpeed;
+        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
+        }
+        
 		if (distanceKm < 1){
 			gpsDistance.setText(String.format("%.0f", distanceM));
 			gpsDistanceUnit.setText(R.string.gps_distance_unit1);
@@ -268,11 +293,11 @@ public final class MainActivity extends Activity implements LocationListener, Li
 		
 		firstime=false;
     }
-        
-    public void onProviderDisabled(String arg0) {}
-    public void onProviderEnabled(String arg0) {}
-    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
+
     
+    /********************************************************** 
+     * Called when we click on the menu item R.id.action_play.
+     **********************************************************/
     public void startRun(){
     	if (accExist){
     		
@@ -309,6 +334,9 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	    }
     }
 
+    /********************************************************** 
+     * Called when we click on the menu item R.id.action_stop.
+     **********************************************************/
     public void stopRun() {
     	if (Running == 0 | Running == 2){
     		Toast.makeText(getApplicationContext(), R.string.stop, Toast.LENGTH_SHORT).show();
@@ -333,11 +361,19 @@ public final class MainActivity extends Activity implements LocationListener, Li
     	}
 	}
     
+    /************************************************************** 
+     * Called when we click on the menu item R.id.action_settings.
+     **************************************************************/
     public void goToSettings(){
 	    Intent localIntent = new Intent(this, Settings.class);
 	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	    startActivity(localIntent);
     }
+
+	public void onProviderDisabled(String arg0) {}
+	public void onProviderEnabled(String arg0) {}
+	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {}
 }
+
 
 

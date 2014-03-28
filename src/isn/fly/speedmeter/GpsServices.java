@@ -107,7 +107,6 @@ public class GpsServices extends Service implements LocationListener, Listener{
     
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		
 		// If we get killed, after returning from here, restart
 		return START_STICKY;
 	}   
@@ -127,26 +126,11 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	  }
 
 	@Override
-	public void onGpsStatusChanged(int event) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void onGpsStatusChanged(int event) {}
 	@Override
-	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void onProviderDisabled(String provider) {}
 	@Override
-	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void onProviderEnabled(String provider) {}
 	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onStatusChanged(String provider, int status, Bundle extras) {}
 }

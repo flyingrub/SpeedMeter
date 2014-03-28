@@ -101,7 +101,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     protected void onSaveInstanceState(Bundle savedInstanceState) {
     	  super.onSaveInstanceState(savedInstanceState);
     	  if (Running == 1){
-    	  timeWhenStopped = chrono.getBase() - SystemClock.elapsedRealtime();
+    		  timeWhenStopped = chrono.getBase() - SystemClock.elapsedRealtime();
     	  }
     	  savedInstanceState.putInt("SavedRunning", Running);
     	  savedInstanceState.putLong("SavedtimeWhenStopped", timeWhenStopped);
@@ -162,7 +162,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
         }
     }
 
-    
    /***************************************** 
     * Called when the activity is recreated. 
     *****************************************/
@@ -202,8 +201,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
             }
         });
     }
-    
-    
+
     /***************************************
      * Called when the activity is stopped. 
      ***************************************/
@@ -263,7 +261,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
         	accExist=false;
         	gpsAccuracy.setText(R.string.value_none);
         }
-        
+
         if (CurrentSpeed > MaxSpeed) {
         	MaxSpeed = CurrentSpeed;
         	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
@@ -275,12 +273,11 @@ public final class MainActivity extends Activity implements LocationListener, Li
      ****************************************/
     public void updateGpsview(Double distanceM, Double distanceKm, Double locMaxSpeed){
     	Log.i("Mainactivity", "updateGpsview done");
-    	
-        if (locMaxSpeed > MaxSpeed) {
-        	MaxSpeed = locMaxSpeed;
-        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
-        }
-        
+	    if (locMaxSpeed > MaxSpeed) {
+	    	MaxSpeed = locMaxSpeed;
+	        gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
+	   }
+
 		if (distanceKm < 1){
 			gpsDistance.setText(String.format("%.0f", distanceM));
 			gpsDistanceUnit.setText(R.string.gps_distance_unit1);
@@ -294,7 +291,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
 		firstime=false;
     }
 
-    
     /********************************************************** 
      * Called when we click on the menu item R.id.action_play.
      **********************************************************/

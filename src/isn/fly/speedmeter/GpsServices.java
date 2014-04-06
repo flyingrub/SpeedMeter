@@ -1,7 +1,6 @@
 package isn.fly.speedmeter;
 
 import android.app.Notification;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -35,16 +34,12 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	
 	
 	@Override
-	public void onCreate() {
-		
-		Intent notificationIntent = new Intent(this, MainActivity.class);
-		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+	public void onCreate() {;
 		
 		Notification notification = new Notification.Builder(getBaseContext())
 				.setContentTitle("Parcours en cours..."
 				.toString()).setContentText("Cliquez pour acceder a l'application")
 				.setSmallIcon(R.drawable.ic_launcher)
-				.setContentIntent(pendingIntent)
 				.build();
 		
 		startForeground(R.string.noti_id, notification);
@@ -92,8 +87,8 @@ public class GpsServices extends Service implements LocationListener, Listener{
 		        	locMaxSpeed = locCurSpeed;
 		        }
 		        
-				MainAc.updateGpsview(distanceM, distanceKm, locMaxSpeed);
-				Log.i("Service", "updateGpsview launched. Distance ="+distanceM);
+				MainAc.updateGpsview(distanceM, distanceKm, locMaxSpeed, locCurSpeed);
+				Log.i("Service", "updateGpsview launched. Distance ="+distanceM + "locMaxSpeed");
 		}
 	}
 	

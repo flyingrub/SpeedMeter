@@ -25,7 +25,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	static boolean firstime = true;
 	boolean accExist = false;
 	double CurrentSpeed = 0;
-	double MaxSpeed = 0;
+	double printMaxSpeed = 0;
 	public long timeWhenStopped = 0;
 	private static int Running = 0; // 0:Stopped 1:Running 2:Paused
 	double currentLon=0 ;
@@ -197,7 +197,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
                 String mm = m < 10 ? "0"+m: m+"";
                 String ss = s < 10 ? "0"+s: s+"";
                 chrono.setText(hh+":"+mm+":"+ss);
-                Log.i("SpeedB", "averageSpeed=" + averageSpeed + "; time =" + time + "; lol=" + (distanceM / (time / 1000)) * 3.7); 
+                Log.i("SpeedB", "averageSpeed=" + averageSpeed + "; time =" + time + "; lol=" + (distanceM / (time / 1000)) * 3.6); 
             }
         });
     }
@@ -248,12 +248,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
      * Called when the location changes. 
      ****************************************/
     public void onLocationChanged(Location location) {
-    	
-        if (location.hasSpeed()) {
-        	CurrentSpeed = location.getSpeed() * 3.6;
-        	gpsSpeed.setText(String.format("%.0f", CurrentSpeed));
-        }
-        
         if (location.hasAccuracy()) {
         	accExist=true;
         	gpsAccuracy.setText(String.format("%.0f", location.getAccuracy()));
@@ -261,22 +255,28 @@ public final class MainActivity extends Activity implements LocationListener, Li
         	accExist=false;
         	gpsAccuracy.setText(R.string.value_none);
         }
-
-        if (CurrentSpeed > MaxSpeed) {
-        	MaxSpeed = CurrentSpeed;
-        	gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
-        }
+        Log.i("Main", "Location Changed. Runnning = "+ Running);
+    	if (Running == 0){
+    		
+	        if (location.hasSpeed()) {
+	        	CurrentSpeed = location.getSpeed() * 3.6;
+	        	gpsSpeed.setText(String.format("%.0f", CurrentSpeed));
+	        	
+		        if (CurrentSpeed > printMaxSpeed) {
+		        	printMaxSpeed = CurrentSpeed;
+		        	gpsSpeedMax.setText(String.format("%.0f", printMaxSpeed));
+		        }
+	        }
+    	}
     }
     
     /****************************************
      * Called by the service. 
      ****************************************/
-    public void updateGpsview(Double distanceM, Double distanceKm, Double locMaxSpeed){
+    public void updateGpsview(Double distanceM, Double distanceKm, Double locMaxSpeed, Double locCurSpeed){
     	Log.i("Mainactivity", "updateGpsview done");
-	    if (locMaxSpeed > MaxSpeed) {
-	    	MaxSpeed = locMaxSpeed;
-	        gpsSpeedMax.setText(String.format("%.0f", MaxSpeed));
-	   }
+    	
+	    gpsSpeedMax.setText(String.format("%.0f", locMaxSpeed));
 
 		if (distanceKm < 1){
 			gpsDistance.setText(String.format("%.0f", distanceM));
@@ -285,7 +285,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 			gpsDistance.setText(String.format("%.3f", distanceKm));
 			gpsDistanceUnit.setText(R.string.gps_distance_unit2);
 		}
-		averageSpeed = (distanceM / (time / 1000)) * 3.7 ;
+		averageSpeed = (distanceM / (time / 1000)) * 3.6 ;
 		gpsAverageSpeed.setText(String.format("%.1f", averageSpeed));
 		
 		firstime=false;
@@ -316,13 +316,13 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	    	}else if (Running == 0){ // was Stopped
 	    		Running=1;
 	    		firstime=true;
-	    		GpsServices.setRunning(Running);
-	    		GpsServices.setfirstime(firstime);
 	    		invalidateOptionsMenu();
 	    		Toast.makeText(getApplicationContext(), R.string.start, Toast.LENGTH_SHORT).show();
 	    	    chrono.setBase(SystemClock.elapsedRealtime());
 	    	    chrono.start();
 	    	    startService(new Intent(getBaseContext(), GpsServices.class));
+	    		GpsServices.setRunning(Running);
+	    		GpsServices.setfirstime(firstime);
 	    	}
 	    	
 	    }else{
@@ -341,7 +341,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     		chrono.setText("--:--:--");
     		timeWhenStopped = 0;
     		distanceM=0;
-    		MaxSpeed=0;
+    		printMaxSpeed=0;
     		averageSpeed=0;
     		firstime=true;
     		Running = 0;

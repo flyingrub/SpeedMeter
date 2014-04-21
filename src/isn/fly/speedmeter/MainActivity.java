@@ -25,6 +25,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	static boolean firstime = true;
 	boolean accExist = false;
 	double CurrentSpeed = 0;
+	double printCurrentSpeed = 0;
 	double printMaxSpeed = 0;
 	public long timeWhenStopped = 0;
 	private static int Running = 0; // 0:Stopped 1:Running 2:Paused
@@ -256,18 +257,19 @@ public final class MainActivity extends Activity implements LocationListener, Li
         	gpsAccuracy.setText(R.string.value_none);
         }
         Log.i("Main", "Location Changed. Runnning = "+ Running);
+        
     	if (Running == 0){
-    		
 	        if (location.hasSpeed()) {
-	        	CurrentSpeed = location.getSpeed() * 3.6;
-	        	gpsSpeed.setText(String.format("%.0f", CurrentSpeed));
+	        	printCurrentSpeed = location.getSpeed() * 3.6;
+	        	gpsSpeed.setText(String.format("%.0f", printCurrentSpeed));
 	        	
-		        if (CurrentSpeed > printMaxSpeed) {
-		        	printMaxSpeed = CurrentSpeed;
+		        if (printCurrentSpeed > printMaxSpeed) {
+		        	printMaxSpeed = printCurrentSpeed;
 		        	gpsSpeedMax.setText(String.format("%.0f", printMaxSpeed));
 		        }
 	        }
     	}
+    	
     }
     
     /****************************************
@@ -276,6 +278,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     public void updateGpsview(Double distanceM, Double distanceKm, Double locMaxSpeed, Double locCurSpeed){
     	Log.i("Mainactivity", "updateGpsview done");
     	
+    	gpsSpeed.setText(String.format("%.0f", locCurSpeed));
 	    gpsSpeedMax.setText(String.format("%.0f", locMaxSpeed));
 
 		if (distanceKm < 1){
@@ -296,7 +299,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
      **********************************************************/
     public void startRun(){
     	if (accExist){
-    		
 	    	if (Running == 1){ // Was Running
 	    		Toast.makeText(getApplicationContext(), R.string.pause, Toast.LENGTH_SHORT).show();
 	    		Running=2;
@@ -324,7 +326,6 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	    		GpsServices.setRunning(Running);
 	    		GpsServices.setfirstime(firstime);
 	    	}
-	    	
 	    }else{
 	    	Toast.makeText(getApplicationContext(), R.string.no_sats, Toast.LENGTH_SHORT).show();
 	    }

@@ -49,5 +49,5 @@ ___
 
 Download
 ---
-* -->  http://www.androidfilehost.com/?w=files&flid=12796  <--
+* -->  https://f-droid.org/repository/browse/?fdid=isn.fly.speedmeter  <--
 * TODO : Save Run + Settings

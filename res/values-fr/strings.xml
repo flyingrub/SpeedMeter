@@ -33,6 +33,7 @@
     <string name="temp">Temps</string>
     <string name="gps_distance_unit1">m</string>
     <string name="gps_distance_unit2">Km</string>
-    <string name="unit_s">sec</string>
+    <string name="unit_s">s</string>
     <string name="reset">Remise à 0</string>
+    <string name="no_sats">En attente d'un meilleur signal GPS... Veuillez ré-essayer plus tard.</string>
 </resources>

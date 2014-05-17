@@ -210,7 +210,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
     protected void onPause() {
     	mLocationManager.removeUpdates(this);
     	mLocationManager.removeGpsStatusListener(this);
-        super.onStop();
+        super.onPause();
     }
     
     /*****************************************************************

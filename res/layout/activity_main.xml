@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     >
-    
+
 <TextView
     android:id="@+id/title_gpsSpeed"
     android:layout_width="match_parent"
@@ -17,7 +17,7 @@
     android:gravity="center"
     style="?android:attr/listSeparatorTextViewStyle"
     android:text="@string/title_ac_speed" />
-    
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="100dp"
@@ -59,13 +59,13 @@
     android:baselineAligned="true"
     android:measureWithLargestChild="true"
     android:weightSum="2.0" >
-        
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="1.0" >
-            
+
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="fill_parent"
@@ -74,12 +74,12 @@
                 android:lines="1"
                 android:text="@string/title_gps_maxspeed"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2.0" >
-                
+
                 <TextView
                     android:id="@+id/gpsSpeedMax"
                     android:layout_width="0dp"
@@ -89,7 +89,7 @@
                     android:maxLines="1"
                     android:text="@string/value_none"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-                
+
                 <TextView
                     android:id="@+id/gpsSpeedUnit"
                     android:layout_width="0dp"
@@ -101,7 +101,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
     </LinearLayout>
-        
+
     <View android:layout_height="30dp"
         android:layout_width="1dp"
         android:layout_marginTop="10dp"
@@ -124,7 +124,7 @@
             android:lines="1"
             android:text="@string/med_speed"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -166,13 +166,13 @@
     android:baselineAligned="true"
     android:measureWithLargestChild="true"
     android:weightSum="2.0" >
-        
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="1.0" >
-            
+
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="fill_parent"
@@ -181,12 +181,12 @@
                 android:lines="1"
                 android:text="@string/title_distance"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2.0" >
-                
+
                 <TextView
                     android:id="@+id/gpsDistance"
                     android:layout_width="0dp"
@@ -196,7 +196,7 @@
                     android:maxLines="1"
                     android:text="@string/value_none"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-                
+
                 <TextView
                     android:id="@+id/gpsdistanceUnit"
                     android:layout_width="0dp"
@@ -208,7 +208,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
     </LinearLayout>
-        
+
     <View android:layout_height="30dp"
         android:layout_width="1dp"
         android:layout_marginTop="10dp"
@@ -231,7 +231,7 @@
             android:lines="1"
             android:text="@string/temp"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-        
+
         <Chronometer 
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content" 
@@ -260,7 +260,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="1.0" >
-        
+
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="fill_parent"
@@ -269,12 +269,12 @@
                 android:lines="1"
                 android:text="@string/title_gps_acc"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2.0" >
-            
+
                 <TextView
                     android:id="@+id/gpsAccuracy"
                     android:layout_width="0dp"
@@ -284,7 +284,7 @@
                     android:gravity="right"
                     android:text="@string/value_none"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-                
+
                 <TextView
                     android:id="@+id/gpsAccuracyUnit"
                     android:layout_width="0dp"
@@ -296,20 +296,20 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
         </LinearLayout>
-    
+
     <View android:layout_height="30dp"
         android:layout_width="1dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:background="#90909090"/>
-    
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="1.0" >
-            
+
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="fill_parent"
@@ -318,7 +318,7 @@
                 android:lines="1"
                 android:text="@string/title_gps_sats"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-            
+
             <TextView
                 android:id="@+id/gpsSats"
                 android:layout_width="fill_parent"
@@ -330,7 +330,7 @@
         </LinearLayout>
 </LinearLayout>
 
-    
+
 <TextView
     android:id="@+id/title_Acce2"
     style="?android:attr/listSeparatorTextViewStyle"

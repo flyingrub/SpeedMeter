@@ -207,7 +207,7 @@ public final class MainActivity extends Activity implements LocationListener, Li
      * Called when the activity is stopped. 
      ***************************************/
     @Override
-    protected void onStop() {
+    protected void onPause() {
     	mLocationManager.removeUpdates(this);
     	mLocationManager.removeGpsStatusListener(this);
         super.onStop();

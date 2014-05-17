@@ -35,5 +35,5 @@
     <string name="gps_distance_unit2">Km</string>
     <string name="unit_s">s</string>
     <string name="reset">Remise à 0</string>
-    <string name="no_sats">En attente d'un meilleur signal GPS... Veuillez ré-essayer plus tard.</string>
+    <string name="no_sats">En attente d\'un meilleur signal GPS&#8230; Veuillez ré-essayer plus tard.</string>
 </resources>

@@ -12,13 +12,13 @@
     <string name="title_GPS">Données GPS</string>
     <string name="title_Acce">Données Accéléromètre</string>
     <string name="title_tab">Graphique</string>
-    <string name="activate_gps">Veuillez activer le Gps pour utiliser l\'application.</string>
-    <string name="go_to_gps">Activer le Gps</string>
+    <string name="activate_gps">Veuillez activer le GPS pour utiliser l\'application.</string>
+    <string name="go_to_gps">Activer le GPS</string>
     <string name="med_speed">Vitesse Moyenne</string>
     <string name="title_ac_speed">Vitesse Actuelle</string>
     <string name="title_speed_data">Données Vitesse</string>
     <string name="title_land">Données GPS et Vitesse</string>
-    <string name="action_settings">Paramétres</string>
+    <string name="action_settings">Paramètres</string>
     <string name="action_play">GO</string>
     <string name="action_stop">Stop</string>
     <string name="action_reset">Réinitialiser</string>

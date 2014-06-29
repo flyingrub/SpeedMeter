@@ -14,8 +14,8 @@
     <string name="title_tab">Graph</string>
     <string name="activate_gps">Activate GPS please.</string>
     <string name="go_to_gps">Go to GPS please</string>
-    <string name="med_speed">average speed</string>
-    <string name="title_ac_speed">current speed</string>
+    <string name="med_speed">Average speed</string>
+    <string name="title_ac_speed">Current speed</string>
     <string name="title_speed_data">Speed data</string>
     <string name="title_land">GPS and Speed data</string>
     <string name="action_settings">Settings</string>
@@ -35,6 +35,15 @@
     <string name="gps_distance_unit2">Km</string>
     <string name="unit_s">sec</string>
     <string name="reset">Reset</string>
-    <string name="noti_id">thisismyid</string>
-    <string name="no_sats">Waiting for a better gps signal... Please try later.</string>
+    <string name="noti_id" translatable="false">thisismyid</string>
+    <string name="no_sats">Waiting for a better gps signal … Please try later.</string>
+    <string name="credits_title">Credits</string>
+    <string name="credits">This app is Open Source, and free. You can find all the source code here : https://github.com/flyingrub/SpeedMeter</string>
+    <string name="nothing">Still Nothing here …</string>
+    <string name="contact_title">Contact</string>
+    <string name="contact">You can contact me at this email for any suggestions or bug report : flyinggrub@gmail.com</string>
+    <string name="donate_title">Donate</string>
+    <string name="donate">You could support my work by buying me a coffee :) \n\nJust click here !</string>
+    <string name="infos">More …</string>
+
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="isn.fly.speedmeter"
+    package="fly.speedmeter.grub"
     android:versionCode="11"
     android:versionName="1.1" >
 
@@ -9,16 +9,16 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <service android:name="GpsServices" />
+        <service android:name="fly.speedmeter.grub.GpsServices" />
         <activity
-            android:name="isn.fly.speedmeter.MainActivity"
+            android:name="fly.speedmeter.grub.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="PermissionGps"></activity>
-        <activity android:name="Settings"
-            android:parentActivityName="isn.fly.speedmeter.MainActivity" >
+        <activity android:name="fly.speedmeter.grub.PermissionGps"/>
+        <activity android:name="fly.speedmeter.grub.Settings"
+            android:parentActivityName="fly.speedmeter.grub.MainActivity" >
             <meta-data
                  android:name="android.support.PARENT_ACTIVITY"
-                 android:value="isn.fly.speedmeter.MainActivity" />
+                 android:value="fly.speedmeter.grub.MainActivity" />
+        </activity>
+        <activity android:name="fly.speedmeter.grub.InfosView"
+            android:parentActivityName="fly.speedmeter.grub.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fly.speedmeter.grub.MainActivity" />
         </activity>
     </application>
 

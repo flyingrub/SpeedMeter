@@ -1,4 +1,4 @@
-package isn.fly.speedmeter;
+package fly.speedmeter.grub;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import fly.speedmeter.grub.R;
 
 public final class MainActivity extends Activity implements LocationListener, Listener{
 	private LocationManager mLocationManager;
@@ -158,6 +160,8 @@ public final class MainActivity extends Activity implements LocationListener, Li
             case R.id.action_settings:
                 goToSettings();
                 return true;
+            case R.id.action_infos:
+                goToInfos();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -365,6 +369,12 @@ public final class MainActivity extends Activity implements LocationListener, Li
 	    Intent localIntent = new Intent(this, Settings.class);
 	    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	    startActivity(localIntent);
+    }
+
+    public void goToInfos(){
+        Intent localIntent = new Intent(this, InfosView.class);
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(localIntent);
     }
 
 	public void onProviderDisabled(String arg0) {}

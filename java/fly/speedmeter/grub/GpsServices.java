@@ -1,4 +1,4 @@
-package isn.fly.speedmeter;
+package fly.speedmeter.grub;
 
 import android.app.Notification;
 import android.app.Service;
@@ -11,7 +11,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import isn.fly.speedmeter.MainActivity;
+
+import fly.speedmeter.grub.R;
 
 public class GpsServices extends Service implements LocationListener, Listener{
 	private LocationManager mLocationManager;
@@ -34,7 +35,7 @@ public class GpsServices extends Service implements LocationListener, Listener{
 	
 	
 	@Override
-	public void onCreate() {;
+	public void onCreate() {
 		
 		Notification notification = new Notification.Builder(getBaseContext())
 				.setContentTitle("Parcours en cours..."

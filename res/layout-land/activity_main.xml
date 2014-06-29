@@ -13,20 +13,28 @@
 <TextView
     android:id="@+id/title_gpsSpeed"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     android:gravity="center"
-    style="?android:attr/listSeparatorTextViewStyle"
+    style="@style/separatorText"
     android:text="@string/title_ac_speed" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="90dp"
+    android:gravity="center"
     android:weightSum="8.0" >
     
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="2.0" >
             
             <TextView
@@ -36,7 +44,7 @@
                 android:gravity="center_horizontal"
                 android:lines="1"
                 android:text="@string/title_distance"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/subTitle" />
             
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,7 +59,7 @@
                     android:gravity="right"
                     android:maxLines="1"
                     android:text="@string/value_none"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/textLarge" />
                 
                 <TextView
                     android:id="@+id/gpsdistanceUnit"
@@ -61,7 +69,7 @@
                     android:gravity="bottom"
                     android:lines="1"
                     android:text="@string/gps_distance_unit1"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:textAppearance="@style/textSmall" />
             </LinearLayout>
     </LinearLayout>
     
@@ -74,7 +82,7 @@
         android:gravity="right"
         android:text="@string/value_none"
         android:textSize="50sp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="@style/textLarge" />
 
     <TextView
       android:id="@+id/gpsSpeedUnit5"
@@ -84,12 +92,13 @@
       android:lines="1"
       android:textSize="30sp"
       android:text="@string/unit_km_h"
-      android:textAppearance="?android:attr/textAppearanceSmall" />
+      android:textAppearance="@style/textSmall" />
     
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="2.0" >
 
         <TextView
@@ -99,7 +108,7 @@
             android:gravity="center_horizontal"
             android:lines="1"
             android:text="@string/temp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="@style/subTitle" />
         
         <Chronometer 
             android:layout_width="fill_parent" 
@@ -112,14 +121,19 @@
 <TextView
     android:id="@+id/title_GPS"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     android:gravity="center"
-    style="?android:attr/listSeparatorTextViewStyle"
+    style="@style/separatorText"
     android:text="@string/title_land" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
 
 <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="50dp"
+    android:layout_height="90dp"
     android:baselineAligned="true"
     android:measureWithLargestChild="true"
     android:weightSum="4.0" >
@@ -128,6 +142,7 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="1.0" >
             
             <TextView
@@ -137,7 +152,7 @@
                 android:gravity="center_horizontal"
                 android:lines="1"
                 android:text="@string/title_gps_maxspeed"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/subTitle" />
             
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,7 +167,7 @@
                     android:gravity="right"
                     android:maxLines="1"
                     android:text="@string/value_none"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/textLarge" />
                 
                 <TextView
                     android:id="@+id/gpsSpeedUnit"
@@ -162,22 +177,15 @@
                     android:gravity="bottom"
                     android:lines="1"
                     android:text="@string/unit_km_h"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:textAppearance="@style/textSmall" />
             </LinearLayout>
     </LinearLayout>
-        
-    <View android:layout_height="30dp"
-        android:layout_width="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:background="#90909090"/>
-
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="1.0" >
 
         <TextView
@@ -187,7 +195,7 @@
             android:gravity="center_horizontal"
             android:lines="1"
             android:text="@string/med_speed"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="@style/subTitle" />
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -202,7 +210,7 @@
                 android:maxLines="1"
                 android:gravity="right"
                 android:text="@string/value_none"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/textLarge" />
 
             <TextView
                 android:id="@+id/gpsSpeedUnit2"
@@ -211,21 +219,15 @@
                 android:layout_weight="1.0"
                 android:lines="1"
                 android:text="@string/unit_km_h"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/textSmall" />
         </LinearLayout>
     </LinearLayout>
-
-    <View android:layout_height="30dp"
-        android:layout_width="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:background="#90909090"/>
         
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="1.0" >
         
             <TextView
@@ -235,7 +237,7 @@
                 android:gravity="center_horizontal"
                 android:lines="1"
                 android:text="@string/title_gps_acc"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/subTitle" />
             
             <LinearLayout
                 android:layout_width="match_parent"
@@ -250,7 +252,7 @@
                     android:maxLines="1"
                     android:gravity="right"
                     android:text="@string/value_none"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/textLarge" />
                 
                 <TextView
                     android:id="@+id/gpsAccuracyUnit"
@@ -260,21 +262,15 @@
                     android:gravity="bottom"
                     android:lines="1"
                     android:text="@string/unit_meter"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:textAppearance="@style/textSmall" />
             </LinearLayout>
         </LinearLayout>
-    
-    <View android:layout_height="30dp"
-        android:layout_width="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:background="#90909090"/>
     
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_weight="1.0" >
             
             <TextView
@@ -284,7 +280,7 @@
                 android:gravity="center_horizontal"
                 android:lines="1"
                 android:text="@string/title_gps_sats"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@style/subTitle" />
             
             <TextView
                 android:id="@+id/gpsSats"
@@ -293,16 +289,7 @@
                 android:maxLines="1"
                 android:gravity="center_horizontal"
                 android:text="@string/value_none"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@style/textLarge" />
         </LinearLayout>
 </LinearLayout>
-    
-<TextView
-    android:id="@+id/title_Acce2"
-    style="?android:attr/listSeparatorTextViewStyle"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:text="@string/title_tab" />
-
 </LinearLayout>

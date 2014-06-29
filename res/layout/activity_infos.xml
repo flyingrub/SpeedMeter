@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="top" >
+
+    <TextView
+        android:id="@+id/title_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="left"
+        style="@style/separatorText"
+        android:text="@string/contact_title"
+        android:layout_marginLeft="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
+        <TextView
+            android:id="@+id/settings1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            style="@style/textCredits"
+            android:autoLink="email"
+            android:text="@string/contact"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:gravity="top" >
+
+        <TextView
+            android:id="@+id/title_credits"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="left"
+            style="@style/separatorText"
+            android:text="@string/credits_title"
+            android:layout_marginLeft="5dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e84e40" />
+
+        <TextView
+            android:id="@+id/credits"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:autoLink="web"
+            style="@style/textCredits"
+            android:text="@string/credits"
+            android:layout_marginTop="10dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:gravity="top" >
+
+        <TextView
+            android:id="@+id/title_donate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="left"
+            style="@style/separatorText"
+            android:text="@string/donate_title"
+            android:layout_marginLeft="5dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e84e40" />
+
+        <TextView
+            android:id="@+id/donate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            style="@style/textCredits"
+            android:text="@string/donate"
+            android:layout_marginTop="10dp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

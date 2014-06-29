@@ -9,3 +9,4 @@ Download
 ---
 * -->  https://f-droid.org/repository/browse/?fdid=isn.fly.speedmeter  <--
 * TODO : Save Run + Settings
+* Soon on playStore

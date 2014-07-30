@@ -12,6 +12,6 @@ Description
 
 Download
 ---
-* -->  https://f-droid.org/repository/browse/?fdid=isn.fly.speedmeter  <--
-* TODO : Save Run + Settings
-* Soon on playStore
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=fly.worship.grub"><img src="http://switzerland.tasis.com/uploaded/images2/appstore_button_google.png" height="100" width="306"/></a>
+</p>

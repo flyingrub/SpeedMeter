@@ -38,7 +38,7 @@
     <string name="no_sats">En attente d\'un meilleur signal GPS&#8230; Veuillez ré-essayer plus tard.</string>
     <string name="credits_title">Credits</string>
     <string name="credits">Cette Application est OpenSource, et Gratuite. Vous pouvez trouver le code source ici : https://github.com/flyingrub/SpeedMeter</string>
-    <string name="nothing">Rien ici pour le meoment …</string>
+    <string name="nothing">Rien ici pour le moment …</string>
     <string name="contact_title">Contact</string>
     <string name="contact">Vous pouvez me contacter à cette email pour des suggestions ou un bug rencontré: flyinggrub@gmail.com</string>
     <string name="donate_title">Donation</string>

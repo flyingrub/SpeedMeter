@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/settings">
+
+    <SwitchPreference
+        android:key="auto_average"
+        android:title="@string/pref_auto_average"
+        android:summary="@string/pref_auto_average_summary"
+        />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/app_info">
+
+        <Preference
+            android:key="license"
+            android:title="@string/license"
+            android:summary="@string/license_type">
+        </Preference>
+
+        <Preference
+            android:key="github"
+            android:title="@string/source_code"
+            android:summary="@string/source_code_summary">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/github"
+                />
+
+        </Preference>
+
+        <Preference
+            android:key="donate"
+            android:title="@string/donate"
+            android:summary="@string/donate_summary">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/doante_url"
+                />
+
+        </Preference>
+
+        <Preference
+            android:key="version"
+            android:title="@string/version"
+            android:summary="">
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

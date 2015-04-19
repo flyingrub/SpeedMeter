@@ -40,7 +40,7 @@ public class GpsServices extends Service implements LocationListener, GpsStatus.
         Notification notification = new Notification.Builder(getBaseContext())
             .setContentTitle(getString(R.string.running))
             .setContentText(getString(R.string.click_here_to_launch))
-            .setSmallIcon(R.drawable.ic_launcher)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(contentIntent)
             .build();
         startForeground(R.string.noti_id, notification);

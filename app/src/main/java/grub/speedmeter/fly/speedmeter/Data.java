@@ -48,7 +48,6 @@ public class Data {
     }
 
     public void addDistance(double distance){
-        Log.d("lol", "" + distance + "++" + distanceKm + "++" + distanceM);
         distanceM = distanceM + distance;
         distanceKm = distanceM / 1000f;
     }

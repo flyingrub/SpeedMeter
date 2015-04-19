@@ -163,7 +163,6 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         String json = sharedPreferences.getString("data", "");
         data = gson.fromJson(json, Data.class);
         data.setOnGpsServiceUpdate(onGpsServiceUpdate);
-        Log.d("resume", json);
         if (data == null){
             data = new Data(onGpsServiceUpdate);
         }
@@ -192,7 +191,6 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         String json = gson.toJson(data);
         prefsEditor.putString("data", json);
         prefsEditor.commit();
-        Log.d("pause", json);
     }
 
     @Override

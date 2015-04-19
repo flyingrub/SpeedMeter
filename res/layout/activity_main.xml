@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:keepScreenOn="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    >
+
+<TextView
+    android:id="@+id/title_gpsSpeed"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center"
+    style="@style/separatorText"
+    android:text="@string/title_ac_speed" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:gravity="center"
+    android:weightSum="2.0" >
+
+    <TextView
+        android:id="@+id/gpsSpeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:maxLines="1"
+        android:gravity="right"
+        android:text="@string/value_none"
+        android:textSize="50sp"
+        android:textAppearance="@style/textLarge" />
+
+    <TextView
+      android:id="@+id/gpsSpeedUnit5"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1.0"
+      android:lines="1"
+      android:textSize="30sp"
+      android:text="@string/unit_km_h"
+      android:textAppearance="@style/textSmall" />
+</LinearLayout>
+
+<TextView
+    android:id="@+id/title_Speed"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center"
+    style="@style/separatorText"
+    android:text="@string/title_speed_data" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:baselineAligned="true"
+    android:gravity="center"
+    android:measureWithLargestChild="true"
+    android:weightSum="2.0" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1.0" >
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="@string/title_gps_maxspeed"
+                android:textAppearance="@style/subTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0" >
+
+                <TextView
+                    android:id="@+id/gpsSpeedMax"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="@string/value_none"
+                    android:textAppearance="@style/textLarge" />
+
+                <TextView
+                    android:id="@+id/gpsSpeedUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@string/unit_km_h"
+                    android:textAppearance="@style/textSmall" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_height="30dp"
+        android:layout_width="1dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1.0" >
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:text="@string/med_speed"
+            android:textAppearance="@style/subTitle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2.0" >
+
+            <TextView
+                android:id="@+id/gpsAverageSpeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:maxLines="1"
+                android:gravity="right"
+                android:text="@string/value_none"
+                android:textAppearance="@style/textLarge" />
+
+            <TextView
+                android:id="@+id/gpsSpeedUnit2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:lines="1"
+                android:text="@string/unit_km_h"
+                android:textAppearance="@style/textSmall" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+<TextView
+    android:id="@+id/title_Run"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_horizontal"
+    style="@style/separatorText"
+    android:text="@string/title_run" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:baselineAligned="true"
+    android:gravity="center"
+    android:measureWithLargestChild="true"
+    android:weightSum="2.0" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1.0" >
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="@string/title_distance"
+                android:textAppearance="@style/subTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0" >
+
+                <TextView
+                    android:id="@+id/gpsDistance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="@string/value_none"
+                    android:textAppearance="@style/textLarge" />
+
+                <TextView
+                    android:id="@+id/gpsdistanceUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@string/gps_distance_unit1"
+                    android:textAppearance="@style/textSmall" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_height="30dp"
+        android:layout_width="1dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0" >
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:lines="1"
+            android:text="@string/temp"
+            android:textAppearance="@style/subTitle" />
+
+        <Chronometer 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" 
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/textLarge"
+            android:id="@+id/chrono"/>
+    </LinearLayout>
+</LinearLayout>
+
+<TextView
+    android:id="@+id/title_GPS"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_horizontal"
+    style="@style/separatorText"
+    android:text="@string/title_GPS" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e84e40" />
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:gravity="center"
+    android:baselineAligned="true"
+    android:measureWithLargestChild="true"
+    android:weightSum="2.0" >
+        
+    <LinearLayout
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0" >
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="@string/title_gps_acc"
+                android:textAppearance="@style/subTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0" >
+
+                <TextView
+                    android:id="@+id/gpsAccuracy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:maxLines="1"
+                    android:gravity="right"
+                    android:text="@string/value_none"
+                    android:textAppearance="@style/textLarge" />
+
+                <TextView
+                    android:id="@+id/gpsAccuracyUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:text="@string/unit_meter"
+                    android:textAppearance="@style/textSmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+    <View android:layout_height="30dp"
+        android:layout_width="1dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0" >
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:text="@string/title_gps_sats"
+                android:textAppearance="@style/subTitle" />
+
+            <TextView
+                android:id="@+id/gpsSats"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:gravity="center_horizontal"
+                android:text="@string/value_none"
+                android:textAppearance="@style/textLarge" />
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/action_play"
+          android:icon="@drawable/ic_action_play"
+          android:title="@string/action_play"
+          android:showAsAction="always" />
+    
+    <item android:id="@+id/action_stop"
+          android:icon="@drawable/ic_action_stop"
+          android:title="@string/action_stop"
+          android:showAsAction="always" />
+    
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:showAsAction="never" />
+
+    <item android:id="@+id/action_infos"
+        android:title="@string/infos"
+        android:showAsAction="never" />
+
+</menu>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SpeedMeter</string>
+    <string name="value_none">–</string>
+    <string name="title_gps_acc">Accuracy</string>
+    <string name="unit_meter">&#x00a0;m</string>
+    <string name="title_gps_sats">Satellites</string>
+    <string name="title_gps_speed">Speed</string>
+    <string name="unit_km_h">&#x00a0;km/h</string>
+    <string name="title_gps_maxspeed">Max speed</string>
+    <string name="title_GPS">GPS Data</string>
+    <string name="title_Acce">Acceleration Data</string>
+    <string name="title_tab">Graph</string>
+    <string name="activate_gps">Activate GPS please.</string>
+    <string name="go_to_gps">Go to GPS please</string>
+    <string name="med_speed">Average speed</string>
+    <string name="title_ac_speed">Current speed</string>
+    <string name="title_speed_data">Speed data</string>
+    <string name="title_land">GPS and Speed data</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_play">GO</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_reset">Reset</string>
+    <string name="stop_first">Please Stop the run first</string>
+    <string name="start_first">Please Start the run first.</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
+    <string name="title_run">Itinary Data</string>
+    <string name="title_distance">Distance</string>
+    <string name="temp">Time</string>
+    <string name="gps_distance_unit1">m</string>
+    <string name="gps_distance_unit2">Km</string>
+    <string name="unit_s">sec</string>
+    <string name="reset">Reset</string>
+    <string name="noti_id" translatable="false">thisismyid</string>
+    <string name="no_sats">Waiting for a better gps signal … Please try later.</string>
+    <string name="credits_title">Credits</string>
+    <string name="credits">This app is Open Source, and free. You can find all the source code here : https://github.com/flyingrub/SpeedMeter</string>
+    <string name="nothing">Still Nothing here …</string>
+    <string name="contact_title">Contact</string>
+    <string name="contact">You can contact me at this email for any suggestions or bug report : flyinggrub@gmail.com</string>
+    <string name="donate_title">Donate</string>
+    <string name="donate">You could support my work by buying me a coffee :) \n\nJust click here !</string>
+    <string name="infos">More …</string>
+
+</resources>

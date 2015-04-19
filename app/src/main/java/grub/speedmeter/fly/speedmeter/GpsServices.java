@@ -37,13 +37,7 @@ public class GpsServices extends Service implements LocationListener, GpsStatus.
         contentIntent = PendingIntent.getActivity(
                 this, 0, notificationIntent, 0);
 
-        Notification notification = new Notification.Builder(getBaseContext())
-            .setContentTitle(getString(R.string.running))
-            .setContentText(getString(R.string.click_here_to_launch))
-            .setSmallIcon(R.drawable.ic_notification)
-            .setContentIntent(contentIntent)
-            .build();
-        startForeground(R.string.noti_id, notification);
+        updateNotification();
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mLocationManager.addGpsStatusListener( this);
@@ -88,7 +82,7 @@ public class GpsServices extends Service implements LocationListener, GpsStatus.
         Notification notification = new Notification.Builder(getBaseContext())
                 .setContentTitle(getString(R.string.running))
                 .setContentText(String.format(getString(R.string.notification), data.getMaxSpeed(), data.getDistance()))
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent)
                 .build();
         startForeground(R.string.noti_id, notification);

@@ -13,7 +13,6 @@
     <string name="please_enable_gps">In order to use this app you need the gps to be enabled.</string>
 
     <string name="running">Route in process…</string>
-    <string name="click_here_to_launch">Click here to resume the app.</string>
     <string name="notification">Max Speed : %1$s, Distance : %2$s.</string>
 
     <string name="settings">Settings</string>

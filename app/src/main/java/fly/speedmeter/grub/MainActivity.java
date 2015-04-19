@@ -1,4 +1,4 @@
-package grub.speedmeter.fly.speedmeter;
+package fly.speedmeter.grub;
 
 import android.content.Context;
 import android.content.Intent;
@@ -162,9 +162,10 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         Gson gson = new Gson();
         String json = sharedPreferences.getString("data", "");
         data = gson.fromJson(json, Data.class);
-        data.setOnGpsServiceUpdate(onGpsServiceUpdate);
         if (data == null){
             data = new Data(onGpsServiceUpdate);
+        }else{
+            data.setOnGpsServiceUpdate(onGpsServiceUpdate);
         }
 
         if (mLocationManager.getAllProviders().indexOf(LocationManager.GPS_PROVIDER) >= 0) {

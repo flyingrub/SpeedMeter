@@ -1,4 +1,4 @@
-package grub.speedmeter.fly.speedmeter;
+package fly.speedmeter.grub;
 
 import android.os.SystemClock;
 import android.text.SpannableString;

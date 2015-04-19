@@ -1,4 +1,4 @@
-package grub.speedmeter.fly.speedmeter;
+package fly.speedmeter.grub;
 
 import android.app.Notification;
 import android.app.PendingIntent;

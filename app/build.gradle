@@ -8,8 +8,8 @@ android {
         applicationId "fly.speedmeter.grub"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 20
-        versionName "2.0 BETA"
+        versionCode 21
+        versionName "2.1 BETA"
     }
     buildTypes {
         release {

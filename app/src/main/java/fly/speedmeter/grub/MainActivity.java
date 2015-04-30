@@ -159,9 +159,11 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         super.onResume();
 
         firstfix = true;
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("data", "");
-        data = gson.fromJson(json, Data.class);
+        if (!data.isRunning()){
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString("data", "");
+            data = gson.fromJson(json, Data.class);
+        }
         if (data == null){
             data = new Data(onGpsServiceUpdate);
         }else{

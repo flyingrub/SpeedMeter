@@ -58,7 +58,7 @@ public class Data {
             s = new SpannableString(String.format("%.0f", distanceM) + "m");
             s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 1, s.length(), 0);
         }else{
-            s = new SpannableString(String.format("%.3f", distanceM) + "Km");
+            s = new SpannableString(String.format("%.3f", distanceKm) + "Km");
             s.setSpan(new RelativeSizeSpan(0.5f), s.length()-2, s.length(), 0);
         }
         return s;

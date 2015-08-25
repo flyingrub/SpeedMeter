@@ -278,6 +278,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
                     refresh.setVisibility(View.INVISIBLE);
                     accuracy.setText("");
                     status.setText(getResources().getString(R.string.waiting_for_fix));
+                    firstfix = true;
                 }
                 break;
 

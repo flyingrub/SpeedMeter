@@ -9,7 +9,15 @@
         android:summary="@string/pref_auto_average_summary"
         />
 
+        <CheckBoxPreference
+            android:key="speed_metric"
+            android:title="@string/pref_speed_metric"
+            android:summaryOn="@string/pref_speed_metric_MPH_summary"
+            android:summaryOff="@string/pref_speed_metric_KMPH_summary"
+            />
+
     </PreferenceCategory>
+
 
     <PreferenceCategory
         android:title="@string/app_info">
@@ -17,7 +25,7 @@
         <Preference
             android:key="license"
             android:title="@string/license"
-            android:summary="@string/license_type">
+            android:summaryOn="@string/pref_auto_average_summary">
         </Preference>
 
         <Preference

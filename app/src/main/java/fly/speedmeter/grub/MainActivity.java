@@ -53,12 +53,14 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Metric" , "In OnCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         data = new Data(onGpsServiceUpdate);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sharedPreferences = getSharedPreferences("speedmeter", MODE_PRIVATE);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -157,6 +159,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("Metric", "In OnResume");
 
         firstfix = true;
         if (!data.isRunning()){
@@ -182,11 +185,27 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
         mLocationManager.addGpsStatusListener(this);
 
+        CharSequence tempspeed;
+        if(currentSpeed == null || currentSpeed.getText() == null || currentSpeed.getText().length() ==0)
+            tempspeed = "0kmph";
+        else
+            tempspeed = currentSpeed.getText();
+
+        if (sharedPreferences.getBoolean("isMPH", false))
+            tempspeed = tempspeed.subSequence(0, tempspeed.length() - 4) + "mph ";
+        else
+            tempspeed = tempspeed.subSequence(0, tempspeed.length() - 4) + "kmph";
+
+        SpannableString s = new SpannableString(tempspeed);
+        s.setSpan(new RelativeSizeSpan(0.25f), s.length()-4, s.length(), 0);
+        currentSpeed.setText(s);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d("Metric", "In OnPause");
         mLocationManager.removeUpdates(this);
         mLocationManager.removeGpsStatusListener(this);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
@@ -199,6 +218,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     @Override
     public void onDestroy(){
         super.onDestroy();
+        Log.d("Metric", "In OnDestoryed");
         stopService(new Intent(getBaseContext(), GpsServices.class));
     }
 
@@ -229,6 +249,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.d("Metric", "In OnLocationChanged");
         if (location.hasAccuracy()) {
             SpannableString s = new SpannableString(String.format("%.0f", location.getAccuracy()) + "m");
             s.setSpan(new RelativeSizeSpan(0.75f), s.length()-1, s.length(), 0);
@@ -248,7 +269,13 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
         if (location.hasSpeed()) {
             progressBarCircularIndeterminate.setVisibility(View.GONE);
-            SpannableString s = new SpannableString(String.format("%.0f", location.getSpeed() * 3.6) + "km/h");
+            Log.d("Metric", "Contains isMPH ?? " + sharedPreferences.contains("isMPH"));
+            Log.d("Metric" , " isMPH == " + sharedPreferences.getBoolean("isMPH", false));
+            SpannableString s;
+            if(sharedPreferences.getBoolean("isMPH", false))
+                s = new SpannableString(String.format("%.0f", location.getSpeed() * 2.23694) + "mph ");
+            else
+                s = new SpannableString(String.format("%.0f", location.getSpeed() * 3.6) + "km/h");
             s.setSpan(new RelativeSizeSpan(0.25f), s.length()-4, s.length(), 0);
             currentSpeed.setText(s);
         }

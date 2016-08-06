@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     private Data.onGpsServiceUpdate onGpsServiceUpdate;
 
     private boolean firstfix;
+    private boolean isMPH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +75,13 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         onGpsServiceUpdate = new Data.onGpsServiceUpdate() {
             @Override
             public void update() {
-                maxSpeed.setText(data.getMaxSpeed());
-                distance.setText(data.getDistance());
+
+                maxSpeed.setText(data.getMaxSpeed(isMPH));
+                distance.setText(data.getDistance(isMPH));
                 if (sharedPreferences.getBoolean("auto_average", false)){
-                    averageSpeed.setText(data.getAverageSpeedMotion());
+                    averageSpeed.setText(data.getAverageSpeedMotion(isMPH));
                 }else{
-                    averageSpeed.setText(data.getAverageSpeed());
+                    averageSpeed.setText(data.getAverageSpeed(isMPH));
                 }
             }
         };
@@ -191,7 +193,9 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         else
             tempspeed = currentSpeed.getText();
 
-        if (sharedPreferences.getBoolean("isMPH", false))
+        updateIsMPH();
+
+        if (isMPH)
             tempspeed = tempspeed.subSequence(0, tempspeed.length() - 4) + "mph ";
         else
             tempspeed = tempspeed.subSequence(0, tempspeed.length() - 4) + "kmph";
@@ -272,7 +276,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
             Log.d("Metric", "Contains isMPH ?? " + sharedPreferences.contains("isMPH"));
             Log.d("Metric" , " isMPH == " + sharedPreferences.getBoolean("isMPH", false));
             SpannableString s;
-            if(sharedPreferences.getBoolean("isMPH", false))
+            if(isMPH)
                 s = new SpannableString(String.format("%.0f", location.getSpeed() * 2.23694) + "mph ");
             else
                 s = new SpannableString(String.format("%.0f", location.getSpeed() * 3.6) + "km/h");
@@ -351,6 +355,15 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+    }
+
+    public void updateIsMPH(){
+        isMPH = sharedPreferences.getBoolean("isMPH", false);
+        return;
+    }
+
+    public boolean getIsMPH(){
+        return isMPH;
     }
 
     @Override

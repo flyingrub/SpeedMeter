@@ -1,5 +1,6 @@
 package fly.speedmeter.grub;
 
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -14,6 +15,7 @@ public class Data {
     private long timeStopped;
     private boolean isFirstTime;
 
+    private double distanceMiles;
     private double distanceKm;
     private double distanceM;
     private double curSpeed;
@@ -50,49 +52,79 @@ public class Data {
     public void addDistance(double distance){
         distanceM = distanceM + distance;
         distanceKm = distanceM / 1000f;
+        distanceMiles = distanceM / 1609.34;
     }
 
-    public SpannableString getDistance(){
+    public SpannableString getDistance(boolean isMPH){
         SpannableString s;
-        if (distanceKm < 1) {
-            s = new SpannableString(String.format("%.0f", distanceM) + "m");
-            s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 1, s.length(), 0);
-        }else{
+        if(isMPH && distanceMiles >= 1){
+            s = new SpannableString(String.format("%.0f", distanceM) + "miles");
+            s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 5, s.length(), 0);
+        }
+        else if (distanceKm >= 1) {
             s = new SpannableString(String.format("%.3f", distanceKm) + "Km");
-            s.setSpan(new RelativeSizeSpan(0.5f), s.length()-2, s.length(), 0);
-        }
-        return s;
-    }
-
-    public SpannableString getMaxSpeed() {
-        SpannableString s = new SpannableString(String.format("%.0f", maxSpeed) + "km/h");
-        s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
-        return s;
-    }
-
-    public SpannableString getAverageSpeed(){
-        double average = ((distanceM / (time / 1000)) * 3.6);
-        SpannableString s;
-        if (time > 0){
-            s = new SpannableString(String.format("%.0f", average) + "km/h");
-
+            s.setSpan(new RelativeSizeSpan(0.4f), s.length()-2, s.length(), 0);
         }else{
-            s = new SpannableString(0 + "km/h");
+            s = new SpannableString(String.format("%.0f", distanceM) + "m");
+            s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 1, s.length(), 0);
         }
-        s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
         return s;
     }
 
-    public SpannableString getAverageSpeedMotion(){
+    public SpannableString getMaxSpeed(boolean isMPH) {
+        SpannableString s;
+        if(isMPH)
+            s = new SpannableString(String.format("%.0f", maxSpeed * 0.621371) + "mph ");
+        else
+            s = new SpannableString(String.format("%.0f", maxSpeed) + "km/h");
+
+        s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 4, s.length(), 0);
+        return s;
+    }
+
+    public SpannableString getAverageSpeed(boolean isMPH){
+
+        SpannableString s;
+
+        if(isMPH){
+            double average = ((distanceM /time ) * 2.23694);
+            if (time > 0) {
+                s = new SpannableString(String.format("%.0f", average) + "mph ");
+
+            } else {
+                s = new SpannableString(0 + "mph ");
+            }
+            s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 4, s.length(), 0);
+        }
+        else {
+            double average = ((distanceM / (time / 1000)) * 3.6);
+            if (time > 0) {
+                s = new SpannableString(String.format("%.0f", average) + "km/h");
+
+            } else {
+                s = new SpannableString(0 + "km/h");
+            }
+            s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 4, s.length(), 0);
+        }
+        return s;
+    }
+
+    public SpannableString getAverageSpeedMotion(Boolean isMPH){
         double motionTime = time - timeStopped;
         SpannableString s;
         if (motionTime < 0){
             s = new SpannableString(0 + "km/h");
         }else{
-            double average = ((distanceM / ( (time - timeStopped) / 1000)) * 3.6) ;
-            s = new SpannableString(String.format("%.0f", average) + "km/h");
+            if(isMPH){
+                double average = ((distanceM / (time - timeStopped)) *  2.23694);
+                s = new SpannableString(String.format("%.0f", average) + "mph ");
+            }else {
+                double average = ((distanceM / ((time - timeStopped) / 1000)) * 3.6);
+                s = new SpannableString(String.format("%.0f", average) + "km/h");
+            }
         }
-        s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
+
+        s.setSpan(new RelativeSizeSpan(0.4f), s.length() - 4, s.length(), 0);
         return s;
     }
 

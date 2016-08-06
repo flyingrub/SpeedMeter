@@ -358,7 +358,17 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     }
 
     public void updateIsMPH(){
+        if(isMPH == sharedPreferences.getBoolean("isMPH", false))
+            return;
+
         isMPH = sharedPreferences.getBoolean("isMPH", false);
+
+        if(isMPH)
+            data.setMaxSpeed(data.getMaxSpeedDouble() * 0.621371);
+        else
+            data.setMaxSpeed(data.getMaxSpeedDouble() * 1.60934);
+
+
         return;
     }
 

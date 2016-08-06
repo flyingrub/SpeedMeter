@@ -166,4 +166,12 @@ public class Data {
     public void setTime(long time) {
         this.time = time;
     }
+
+    public void setMaxSpeed(double maxSpeed){
+        this.maxSpeed = maxSpeed;
+    }
+
+    public double getMaxSpeedDouble(){
+        return maxSpeed;
+    }
 }

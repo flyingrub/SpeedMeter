@@ -31,4 +31,11 @@
     <string name="github" translatable="false">https://github.com/flyingrub/SpeedMeter</string>
     <string name="license_type" translatable="false">GNU General Public License 2</string>
     <string name="doante_url" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6DE8SFMJKRVK2</string>
+
+    <string name="pref_speed_metric">Metric</string>
+    <string name="pref_speed_metric_KMPH">KMPH</string>
+    <string name="pref_speed_metric_MPH">MPH</string>
+    <string name="pref_speed_metric_KMPH_summary">Kilometers Per Hour</string>tring>
+    <string name="pref_speed_metric_MPH_summary">Miles Per Hour</string>
+
 </resources>

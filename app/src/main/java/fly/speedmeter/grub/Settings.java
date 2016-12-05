@@ -3,12 +3,15 @@ package fly.speedmeter.grub;
 import android.content.BroadcastReceiver;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 /**
@@ -31,6 +34,8 @@ public class Settings extends ActionBarActivity {
                 .beginTransaction()
                 .replace(R.id.content_frame, new SettingsFragment())
                 .commit();
+
+
     }
 
     @Override
@@ -66,9 +71,27 @@ public class Settings extends ActionBarActivity {
         }
 
         private void updatePreference(Preference preference) {
-            if (preference.getKey().equals("version")) {
+            if (preference.getKey().equals("version"))
                 preference.setSummary(String.format("v%s (%d)", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
+            else if(preference.getKey().equals("speed_metric")){
+                CheckBoxPreference checkBoxPreference = (CheckBoxPreference) preference;
+                checkBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object o) {
+                        boolean isChecked = (Boolean) o;
+
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("speedmeter",MODE_PRIVATE);
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isMPH" , isChecked);
+                        editor.commit();
+
+                        Log.d("Metric", "isChecked = " + isChecked);
+                        return true;
+                    }
+                });
             }
+
         }
 
 

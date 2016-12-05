@@ -84,8 +84,9 @@ public class GpsServices extends Service implements LocationListener, GpsStatus.
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(contentIntent);
 
+
         if(asData){
-            builder.setContentText(String.format(getString(R.string.notification), data.getMaxSpeed(), data.getDistance()));
+            builder.setContentText(String.format(getString(R.string.notification), data.getMaxSpeed(true), data.getDistance(true)));
         }else{
             builder.setContentText(String.format(getString(R.string.notification), '-', '-'));
         }

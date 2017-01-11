@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Брзиномер</string>
+
+    <string name="max_speed">Макс. брзина</string>
+    <string name="average_speed">Просечна брзина</string>
+    <string name="distance">Пређени пут</string>
+    <string name="time">Време</string>
+    <string name="accuracy">Прецизност</string>
+    <string name="satellite">Сателити</string>
+
+    <string name="waiting_for_fix">Чекам на ГПС…</string>
+    <string name="gps_disabled">ГПС искључен</string>
+    <string name="please_enable_gps">Да бисте користили ову апликацију морате укључити ГПС.</string>
+
+    <string name="running">Мерење у току…</string>
+    <string name="notification">Макс. брзина: %1$s, пређени пут: %2$s.</string>
+
+    <string name="settings">Поставке</string>
+    <string name="app_info">О програму</string>
+    <string name="pref_auto_average">Аутоматско откривање заустављања.</string>
+    <string name="pref_auto_average_summary">Време проведено у стајању се не узима у обрачун просечне брзине.</string>
+
+    <string name="license">Лиценца</string>
+    <string name="donate">Донације</string>
+    <string name="donate_summary">Подржите мој рад :) …</string>
+    <string name="source_code">Гитхаб</string>
+    <string name="source_code_summary">Приступ изворном кôду.</string>
+    <string name="version">Издање Брзиномера</string>
+
+    <string name="noti_id" translatable="false">Speedmeterisanid</string>
+    <string name="github" translatable="false">https://github.com/flyingrub/SpeedMeter</string>
+    <string name="license_type" translatable="false">GNU General Public License 2</string>
+    <string name="doante_url" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6DE8SFMJKRVK2</string>
+</resources>

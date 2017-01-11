@@ -8,16 +8,16 @@
     <string name="accuracy">Accuracy</string>
     <string name="satellite">Satellites</string>
 
-    <string name="waiting_for_fix">Waiting for gps fix …</string>
-    <string name="gps_disabled">Gps disabled</string>
-    <string name="please_enable_gps">In order to use this app you need the gps to be enabled.</string>
+    <string name="waiting_for_fix">Waiting for GPS fix …</string>
+    <string name="gps_disabled">GPS disabled</string>
+    <string name="please_enable_gps">In order to use this app you need the GPS to be enabled.</string>
 
     <string name="running">Route in process…</string>
     <string name="notification">Max Speed : %1$s, Distance : %2$s.</string>
 
     <string name="settings">Settings</string>
     <string name="app_info">About this app</string>
-    <string name="pref_auto_average">Automaticaly detect stop time.</string>
+    <string name="pref_auto_average">Automatically detect stop time.</string>
     <string name="pref_auto_average_summary">The time spent at stop will not count in the average speed.</string>
     <string name="pref_miles_per_hour">Use miles per hour</string>
     <string name="pref_miles_per_hour_summary">Display the speed in mph instead of km/h</string>
@@ -25,12 +25,12 @@
     <string name="license">License</string>
     <string name="donate">Donate</string>
     <string name="donate_summary">Click in order to support my work :) …</string>
-    <string name="source_code">Github</string>
-    <string name="source_code_summary">Acces to the source code.</string>
+    <string name="source_code">GitHub</string>
+    <string name="source_code_summary">Access to the source code.</string>
     <string name="version">Speedmeter Version</string>
 
     <string name="noti_id" translatable="false">Speedmeterisanid</string>
-    <string name="github" translatable="false">https://github.com/holylobster</string>
+    <string name="github" translatable="false">https://github.com/flyingrub/SpeedMeter</string>
     <string name="license_type" translatable="false">GNU General Public License 2</string>
     <string name="doante_url" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6DE8SFMJKRVK2</string>
 </resources>

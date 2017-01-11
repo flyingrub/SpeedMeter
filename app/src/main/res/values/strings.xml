@@ -19,6 +19,8 @@
     <string name="app_info">About this app</string>
     <string name="pref_auto_average">Automaticaly detect stop time.</string>
     <string name="pref_auto_average_summary">The time spent at stop will not count in the average speed.</string>
+    <string name="pref_miles_per_hour">Use miles per hour</string>
+    <string name="pref_miles_per_hour_summary">Display the speed in mph instead of km/h</string>
 
     <string name="license">License</string>
     <string name="donate">Donate</string>

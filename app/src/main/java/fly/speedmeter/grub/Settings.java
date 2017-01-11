@@ -45,8 +45,6 @@ public class Settings extends ActionBarActivity {
     }
 
     public static class SettingsFragment extends PreferenceFragment {
-        private BroadcastReceiver br;
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);

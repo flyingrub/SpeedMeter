@@ -28,6 +28,8 @@ import com.gc.materialdesign.widgets.Dialog;
 import com.google.gson.Gson;
 import com.melnykov.fab.FloatingActionButton;
 
+import java.util.Locale;
+
 
 public class MainActivity extends ActionBarActivity implements LocationListener, GpsStatus.Listener {
 
@@ -248,7 +250,11 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
         if (location.hasSpeed()) {
             progressBarCircularIndeterminate.setVisibility(View.GONE);
-            SpannableString s = new SpannableString(String.format("%.0f", location.getSpeed() * 3.6) + "km/h");
+            String speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6) + "km/h";
+            if (sharedPreferences.getBoolean("auto_average", false)) { // Convert to MPH
+                speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6 * 0.62137119) + "km/h";
+            }
+            SpannableString s = new SpannableString(speed);
             s.setSpan(new RelativeSizeSpan(0.25f), s.length()-4, s.length(), 0);
             currentSpeed.setText(s);
         }

@@ -9,6 +9,12 @@
         android:summary="@string/pref_auto_average_summary"
         />
 
+    <SwitchPreference
+        android:key="miles_per_hour"
+        android:title="@string/pref_miles_per_hour"
+        android:summary="@string/pref_miles_per_hour_summary"
+    />
+
     </PreferenceCategory>
 
     <PreferenceCategory

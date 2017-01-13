@@ -252,7 +252,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
             progressBarCircularIndeterminate.setVisibility(View.GONE);
             String speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6) + "km/h";
             if (sharedPreferences.getBoolean("auto_average", false)) { // Convert to MPH
-                speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6 * 0.62137119) + "km/h";
+                speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6 * 0.62137119) + "mi/h";
             }
             SpannableString s = new SpannableString(speed);
             s.setSpan(new RelativeSizeSpan(0.25f), s.length()-4, s.length(), 0);

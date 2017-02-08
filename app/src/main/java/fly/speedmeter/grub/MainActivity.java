@@ -159,7 +159,6 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     @Override
     protected void onResume() {
         super.onResume();
-
         firstfix = true;
         if (!data.isRunning()){
             Gson gson = new Gson();
@@ -183,7 +182,6 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         }
 
         mLocationManager.addGpsStatusListener(this);
-
     }
 
     @Override
@@ -251,7 +249,8 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         if (location.hasSpeed()) {
             progressBarCircularIndeterminate.setVisibility(View.GONE);
             String speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6) + "km/h";
-            if (sharedPreferences.getBoolean("auto_average", false)) { // Convert to MPH
+
+            if (sharedPreferences.getBoolean("miles_per_hour", false)) { // Convert to MPH
                 speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6 * 0.62137119) + "mi/h";
             }
             SpannableString s = new SpannableString(speed);

@@ -8,9 +8,14 @@ android {
         applicationId "fly.speedmeter.grub"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 22
-        versionName "2.2"
+        versionCode 23
+        versionName "2.3"
     }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
     buildTypes {
         release {
             minifyEnabled false

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Speedmeter</string>
+
+    <string name="max_speed">En Yüksek Hız</string>
+    <string name="average_speed">Ortalama Hız</string>
+    <string name="distance">Mesafe</string>
+    <string name="time">Zaman</string>
+    <string name="accuracy">Hassasiyet</string>
+    <string name="satellite">Kullanılan Uydular</string>
+
+    <string name="waiting_for_fix">Konum Sinyali Alınıyor…</string>
+    <string name="gps_disabled">Konum Devre Dışı</string>
+    <string name="please_enable_gps">Uygulamayı Kullanmak İçin Konumunuz Açık Olmalı.</string>
+
+    <string name="running">Rota Hesaplanıyor…</string>
+    <string name="notification">En Yüksek Hız : %1$s, Mesafe : %2$s.</string>
+
+    <string name="settings">Ayarlar</string>
+    <string name="app_info">Uygulama Hakkında</string>
+    <string name="pref_auto_average">Durma anını otomatik olarak algıla</string>
+    <string name="pref_auto_average_summary">Hareketsiz zamanda geçen süre ortalama hıza katılmaz.</string>
+    <string name="pref_miles_per_hour">Mil/saat olarak hesapla</string>
+    <string name="pref_miles_per_hour_summary">Hızı km/s yerine mil/s olarak hesaplar.</string>
+
+    <string name="license">Lisans</string>
+    <string name="donate">Bağış</string>
+    <string name="donate_summary">Desteklemek için tıkla :) …</string>
+    <string name="source_code">GitHub</string>
+    <string name="source_code_summary">Kaynak koduna buradan ulaşabilirsin.</string>
+    <string name="version">Uygulama Sürümü</string>
+</resources>

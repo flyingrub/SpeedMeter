@@ -11,18 +11,9 @@ It can display some useful information about your route:
 * How many meters or kilometers you traveled
 * Your maximum speed
 
+<a href="https://f-droid.org/packages/fly.speedmeter.grub" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="150"/></a>
+<a href="https://play.google.com/store/apps/details?id=fly.speedmeter.grub" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="150"/></a>
+
 ![alt tag](https://raw.githubusercontent.com/flyingrub/SpeedMeter/master/screen.png)
-
-
-
-
-Download
----
-<p align="center">
-  <a href="https://f-droid.org/repository/browse/?fdfilter=Speedmeter&fdid=fly.speedmeter.grub"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png" height="100" width="306"/></a>
-</p>
-
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=fly.speedmeter.grub"><img src="http://switzerland.tasis.com/uploaded/images2/appstore_button_google.png" height="100" width="306"/></a>
-</p>
-

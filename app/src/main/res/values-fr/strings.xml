@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Speedmeter</string>
+
+    <string name="max_speed">Vitesse Max</string>
+    <string name="average_speed">Vitesse Moyenne</string>
+    <string name="distance">Distance</string>
+    <string name="time">Tempsime</string>
+    <string name="accuracy">Précision</string>
+    <string name="satellite">Satellites</string>
+
+    <string name="waiting_for_fix">En attente de localisation GPS…</string>
+    <string name="gps_disabled">GPS désactivé</string>
+    <string name="please_enable_gps">Pour utiliser cette application, le GPS doit être activé.</string>
+
+    <string name="running">Parcours en cours…</string>
+    <string name="notification">Vitesse Max : %1$s, Distance : %2$s.</string>
+
+    <string name="settings">Paramètres</string>
+    <string name="app_info">À propos</string>
+    <string name="pref_auto_average">Détecter automatiquement les temps d\'arrêt.</string>
+    <string name="pref_auto_average_summary">Le temps passé à l\'arrêt ne comptera pas dans la vitesse moyenne.</string>
+    <string name="pref_miles_per_hour">Utiliser les miles par heure</string>
+    <string name="pref_miles_per_hour_summary">Afficher la vitesse en mi/h au lieu de km/h</string>
+
+    <string name="license">Licence</string>
+    <string name="donate">Faire un don</string>
+    <string name="donate_summary">Cliquez pour soutenir mon travail… :)</string>
+    <string name="source_code">GitHub</string>
+    <string name="source_code_summary">Accès au code source.</string>
+    <string name="version">Version de Speedmeter</string>
+
+</resources>

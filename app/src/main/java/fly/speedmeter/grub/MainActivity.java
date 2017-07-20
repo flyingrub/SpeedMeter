@@ -74,13 +74,44 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         onGpsServiceUpdate = new Data.onGpsServiceUpdate() {
             @Override
             public void update() {
-                maxSpeed.setText(data.getMaxSpeed());
-                distance.setText(data.getDistance());
+                double maxSpeedTemp = data.getMaxSpeed();
+                double distanceTemp = data.getDistance();
+                double averageTemp;
                 if (sharedPreferences.getBoolean("auto_average", false)){
-                    averageSpeed.setText(data.getAverageSpeedMotion());
+                    averageTemp = data.getAverageSpeedMotion();
                 }else{
-                    averageSpeed.setText(data.getAverageSpeed());
+                    averageTemp = data.getAverageSpeed();
                 }
+
+                String speedUnits;
+                String distanceUnits;
+                if (sharedPreferences.getBoolean("miles_per_hour", false)) {
+                    maxSpeedTemp *= 0.62137119;
+                    distanceTemp = distanceTemp / 1000.0 * 0.62137119;
+                    averageTemp *= 0.62137119;
+                    speedUnits = "mi/h";
+                    distanceUnits = "mi";
+                } else {
+                    speedUnits = "km/h";
+                    if (distanceTemp <= 1000.0) {
+                        distanceUnits = "m";
+                    } else {
+                        distanceTemp /= 1000.0;
+                        distanceUnits = "km";
+                    }
+                }
+
+                SpannableString s = new SpannableString(String.format("%.0f", maxSpeedTemp) + speedUnits);
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
+                maxSpeed.setText(s);
+
+                s = new SpannableString(String.format("%.0f", averageTemp) + speedUnits);
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
+                averageSpeed.setText(s);
+
+                s = new SpannableString(String.format("%.3f", distanceTemp) + distanceUnits);
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 2, s.length(), 0);
+                distance.setText(s);
             }
         };
 

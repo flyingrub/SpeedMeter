@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Speedmeter</string>
+
+    <string name="max_speed">Velocidade Máxima</string>
+    <string name="average_speed">Velocidade Média</string>
+    <string name="distance">Distância</string>
+    <string name="time">Tempo</string>
+    <string name="accuracy">Precisão</string>
+    <string name="satellite">Satélites</string>
+
+    <string name="waiting_for_fix">Aguardando reparo do GPS …</string>
+    <string name="gps_disabled">GPS desabilitado</string>
+    <string name="please_enable_gps">Para usar este app você precisa que o GPS esteja habilitado.</string>
+
+    <string name="running">Rota em processo…</string>
+    <string name="notification">Velocidade Máx : %1$s, Distância : %2$s.</string>
+
+    <string name="settings">Configurações</string>
+    <string name="app_info">Sobre este app</string>
+    <string name="pref_auto_average">Detectar automaticamente tempo de parada.</string>
+    <string name="pref_auto_average_summary">O tempo gasto na parada não conta na velocidade média.</string>
+    <string name="pref_miles_per_hour">Usar milhas por hora</string>
+    <string name="pref_miles_per_hour_summary">Mostrar a velocidade em mi/h ao invés de km/h</string>
+
+    <string name="license">Licença</string>
+    <string name="donate">Doar</string>
+    <string name="donate_summary">Clique para apoiar meu trabalho :) …</string>
+    <string name="source_code">GitHub</string>
+    <string name="source_code_summary">Acesso ao código fonte.</string>
+    <string name="version">Speedmeter Versão</string>
+
+    <string name="noti_id" translatable="false">Speedmeterisanid</string>
+    <string name="github" translatable="false">https://github.com/flyingrub/SpeedMeter</string>
+    <string name="license_type" translatable="false">GNU General Public License 2</string>
+    <string name="doante_url" translatable="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=6DE8SFMJKRVK2</string>
+</resources>

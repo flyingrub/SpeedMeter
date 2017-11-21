@@ -8,9 +8,9 @@
     <string name="accuracy">Precisão</string>
     <string name="satellite">Satélites</string>
 
-    <string name="waiting_for_fix">Aguardando reparo do GPS …</string>
+    <string name="waiting_for_fix">Aguardando ajuste do GPS …</string>
     <string name="gps_disabled">GPS desabilitado</string>
-    <string name="please_enable_gps">Para usar este app você precisa que o GPS esteja habilitado.</string>
+    <string name="please_enable_gps">Para utilizar este aplicativo, é necessário que o GPS esteja habilitado.</string>
 
     <string name="running">Rota em processo…</string>
     <string name="notification">Velocidade Máx : %1$s, Distância : %2$s.</string>
@@ -27,7 +27,7 @@
     <string name="donate_summary">Clique para apoiar meu trabalho :) …</string>
     <string name="source_code">GitHub</string>
     <string name="source_code_summary">Acesso ao código fonte.</string>
-    <string name="version">Speedmeter Versão</string>
+    <string name="version">Versão do Speedmeter</string>
 
     <string name="noti_id" translatable="false">Speedmeterisanid</string>
     <string name="github" translatable="false">https://github.com/flyingrub/SpeedMeter</string>

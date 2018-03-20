@@ -58,19 +58,19 @@ public class Data {
         if (time <= 0) {
             average = 0.0;
         } else {
-            average = (distanceM / (time / 1000)) * 3.6;
+            average = (distanceM / (time / 1000.0)) * 3.6;
         }
         return average;
     }
 
     public double getAverageSpeedMotion(){
-        double motionTime = time - timeStopped;
+        long motionTime = time - timeStopped;
         double average;
         String units;
         if (motionTime <= 0){
             average = 0.0;
         } else {
-            average = (distanceM / (motionTime / 1000)) * 3.6;
+            average = (distanceM / (motionTime / 1000.0)) * 3.6;
         }
         return average;
     }

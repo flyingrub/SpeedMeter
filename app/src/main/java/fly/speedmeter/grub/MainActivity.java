@@ -261,7 +261,11 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     @Override
     public void onLocationChanged(Location location) {
         if (location.hasAccuracy()) {
-            SpannableString s = new SpannableString(String.format("%.0f", location.getAccuracy()) + "m");
+            String acc = String.format("%.0f", location.getAccuracy()) + "m";
+            if (sharedPreferences.getBoolean("miles_per_hour", false)) {
+                acc = String.format(Locale.ENGLISH, "%.0f", location.getAccuracy() * 3.28084) + "ft";
+            }
+            SpannableString s = new SpannableString(acc);
             s.setSpan(new RelativeSizeSpan(0.75f), s.length()-1, s.length(), 0);
             accuracy.setText(s);
 

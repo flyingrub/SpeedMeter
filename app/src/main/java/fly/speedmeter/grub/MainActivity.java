@@ -101,16 +101,16 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
                     }
                 }
 
-                SpannableString s = new SpannableString(String.format("%.0f", maxSpeedTemp) + speedUnits);
-                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
+                SpannableString s = new SpannableString(String.format("%.0f %s", maxSpeedTemp, speedUnits));
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - speedUnits.length() - 1, s.length(), 0);
                 maxSpeed.setText(s);
 
-                s = new SpannableString(String.format("%.0f", averageTemp) + speedUnits);
-                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 4, s.length(), 0);
+                s = new SpannableString(String.format("%.0f %s", averageTemp, speedUnits));
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - speedUnits.length() - 1, s.length(), 0);
                 averageSpeed.setText(s);
 
-                s = new SpannableString(String.format("%.3f", distanceTemp) + distanceUnits);
-                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - 2, s.length(), 0);
+                s = new SpannableString(String.format("%.3f %s", distanceTemp, distanceUnits));
+                s.setSpan(new RelativeSizeSpan(0.5f), s.length() - distanceUnits.length() - 1, s.length(), 0);
                 distance.setText(s);
             }
         };
@@ -261,12 +261,16 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     @Override
     public void onLocationChanged(Location location) {
         if (location.hasAccuracy()) {
-            String acc = String.format("%.0f", location.getAccuracy()) + "m";
+            double acc = location.getAccuracy();
+            String units;
             if (sharedPreferences.getBoolean("miles_per_hour", false)) {
-                acc = String.format(Locale.ENGLISH, "%.0f", location.getAccuracy() * 3.28084) + "ft";
+                units = "ft";
+                acc *= 3.28084;
+            } else {
+                units = "m";
             }
-            SpannableString s = new SpannableString(acc);
-            s.setSpan(new RelativeSizeSpan(0.75f), s.length()-1, s.length(), 0);
+            SpannableString s = new SpannableString(String.format("%.0f %s", acc, units));
+            s.setSpan(new RelativeSizeSpan(0.75f), s.length()-units.length()-1, s.length(), 0);
             accuracy.setText(s);
 
             if (firstfix){
@@ -283,13 +287,16 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
         if (location.hasSpeed()) {
             progressBarCircularIndeterminate.setVisibility(View.GONE);
-            String speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6) + "km/h";
-
+            double speed = location.getSpeed() * 3.6;
+            String units;
             if (sharedPreferences.getBoolean("miles_per_hour", false)) { // Convert to MPH
-                speed = String.format(Locale.ENGLISH, "%.0f", location.getSpeed() * 3.6 * 0.62137119) + "mi/h";
+                speed *= 0.62137119;
+                units = "mi/h";
+            } else {
+                units = "km/h";
             }
-            SpannableString s = new SpannableString(speed);
-            s.setSpan(new RelativeSizeSpan(0.25f), s.length()-4, s.length(), 0);
+            SpannableString s = new SpannableString(String.format(Locale.ENGLISH, "%.0f %s", speed, units));
+            s.setSpan(new RelativeSizeSpan(0.25f), s.length()-units.length()-1, s.length(), 0);
             currentSpeed.setText(s);
         }
 

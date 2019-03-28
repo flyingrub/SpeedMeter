@@ -44,6 +44,7 @@ public class GpsServices extends Service implements LocationListener, GpsStatus.
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, this);
     }
 
+    @Override
     public void onLocationChanged(Location location) {
         data = MainActivity.getData();
         if (data.isRunning()){

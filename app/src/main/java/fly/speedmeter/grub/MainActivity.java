@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
     private TextView averageSpeed;
     private TextView distance;
     private Chronometer time;
-    private Data.onGpsServiceUpdate onGpsServiceUpdate;
+    private Data.OnGpsServiceUpdate onGpsServiceUpdate;
 
     private boolean firstfix;
 
@@ -71,7 +72,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         refresh = (FloatingActionButton) findViewById(R.id.refresh);
         refresh.setVisibility(View.INVISIBLE);
 
-        onGpsServiceUpdate = new Data.onGpsServiceUpdate() {
+        onGpsServiceUpdate = new Data.OnGpsServiceUpdate() {
             @Override
             public void update() {
                 double maxSpeedTemp = data.getMaxSpeed();
@@ -276,7 +277,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
             if (firstfix){
                 status.setText("");
                 fab.setVisibility(View.VISIBLE);
-                if (!data.isRunning() && !maxSpeed.getText().equals("")) {
+                if (!data.isRunning() && !TextUtils.isEmpty(maxSpeed.getText())) {
                     refresh.setVisibility(View.VISIBLE);
                 }
                 firstfix = false;
@@ -302,6 +303,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
 
     }
 
+    @Override
     public void onGpsStatusChanged (int event) {
         switch (event) {
             case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
@@ -366,6 +368,7 @@ public class MainActivity extends ActionBarActivity implements LocationListener,
         return data;
     }
 
+    @Override
     public void onBackPressed(){
         Intent a = new Intent(Intent.ACTION_MAIN);
         a.addCategory(Intent.CATEGORY_HOME);

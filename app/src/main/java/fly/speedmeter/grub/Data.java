@@ -13,13 +13,13 @@ public class Data {
     private double curSpeed;
     private double maxSpeed;
 
-    private onGpsServiceUpdate onGpsServiceUpdate;
+    private OnGpsServiceUpdate onGpsServiceUpdate;
 
-    public interface onGpsServiceUpdate{
+    public interface OnGpsServiceUpdate{
         public void update();
     }
 
-    public void setOnGpsServiceUpdate(onGpsServiceUpdate onGpsServiceUpdate){
+    public void setOnGpsServiceUpdate(OnGpsServiceUpdate onGpsServiceUpdate){
         this.onGpsServiceUpdate = onGpsServiceUpdate;
     }
 
@@ -35,7 +35,7 @@ public class Data {
         timeStopped = 0;
     }
 
-    public Data(onGpsServiceUpdate onGpsServiceUpdate){
+    public Data(OnGpsServiceUpdate onGpsServiceUpdate){
         this();
         setOnGpsServiceUpdate(onGpsServiceUpdate);
     }
